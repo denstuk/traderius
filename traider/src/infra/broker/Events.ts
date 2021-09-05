@@ -1,7 +1,9 @@
+import { Broker } from "./Broker"
+
 export class Events {
-    static on(eventName: string, config: any): Function {
-        return () => {
-            
+    static on(topic: string): Function {
+        return (target: Object, propertyKey: string, descriptor: PropertyDescriptor) => {
+            Broker.subscribe(topic, descriptor.value)
         }
     }
 }
