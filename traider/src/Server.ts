@@ -1,5 +1,5 @@
-import { Broker } from './infra/broker/Broker'
-import { Events } from './infra/broker/Events'
+import { Events } from "@traderius/common/src/broker/Events"
+import { Broker } from "@traderius/common/src/broker/Broker"
 
 function sleep(ms: number): Promise<void> {
     return new Promise((res, _) => {
@@ -20,8 +20,6 @@ export class Server {
     static async up(): Promise<void> {
         await sleep(3000)
         await Broker.connect()
-        const l = new Listener()
-        //await Broker.subscribe('traider.buyStock', (data: any) => console.log(data))
         await Broker.listen()
         setInterval(async () => {
             await Broker.publish('traider.buyStock', { ticker: 'APPL', amount: 50 })
