@@ -23,9 +23,9 @@ services:
     #   - /var/run/docker.sock:/var/run/docker.sock
     logging:
       driver: "none"
-  traider:
-    build: ../traider
-    container_name: traderius-traider
+  trader:
+    build: ../trader
+    container_name: traderius-trader
     depends_on: 
       - kafka
       - zookeeper

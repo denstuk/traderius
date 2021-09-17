@@ -1,6 +1,8 @@
 FROM node:alpine
 
-WORKDIR /app
+WORKDIR /app/trader
+
+COPY /Users/mac/Documents/WorkFolder/denstuk/traderius/common /app/common
 
 COPY package.json .
 
