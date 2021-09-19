@@ -7,6 +7,7 @@ services:
       - 2181:2181
     logging:
       driver: "none"
+
   kafka:
     image: wurstmeister/kafka
     container_name: traderius-kafka
@@ -23,6 +24,7 @@ services:
     #   - /var/run/docker.sock:/var/run/docker.sock
     logging:
       driver: "none"
+
   trader:
     build: ../trader
     container_name: traderius-trader
@@ -30,5 +32,15 @@ services:
       - kafka
       - zookeeper
     links: 
+      - kafka
+      - zookeeper
+
+  notifier:
+    build: ../notifier
+    container_name: traderius-notifier
+    depends_on:
+      - kafka
+      - zookeeper
+    links:
       - kafka
       - zookeeper

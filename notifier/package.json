@@ -1,0 +1,39 @@
+{
+  "name": "@traderius/notifier",
+  "version": "1.0.0",
+  "description": "Traderius notification service",
+  "main": "index.ts",
+  "scripts": {
+    "start:dev": "ts-node-dev src/index.ts",
+    "format": "prettier src/**/*.ts --write",
+    "lint": "eslint . --ext .ts",
+    "migration:generate": "ts-node ./node_modules/.bin/typeorm migration:generate -n ${NAME=MigrationName}",
+    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run"
+  },
+  "keywords": [
+    "Node.js"
+  ],
+  "author": "Denis Stuk <den.stuk00@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^16.9.2",
+    "@types/node-telegram-bot-api": "^0.51.4",
+    "@types/pino": "^6.3.11",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.2.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@traderius/common": "^1.0.0",
+    "dotenv": "^10.0.0",
+    "node-telegram-bot-api": "^0.54.0",
+    "pg": "^8.7.1",
+    "pino": "^6.13.2",
+    "pino-pretty": "^7.0.1",
+    "typeorm": "^0.2.37"
+  }
+}
