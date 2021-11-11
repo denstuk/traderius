@@ -1,0 +1,31 @@
+{
+  "name": "hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "ts-node-dev ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.2.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@traderius/common": "^1.0.5",
+    "dotenv": "^10.0.0",
+    "pg": "^8.7.1",
+    "pino": "^6.13.2",
+    "pino-pretty": "^7.0.1",
+    "rimraf": "^2.7.1",
+    "typeorm": "^0.2.37"
+  }
+}
