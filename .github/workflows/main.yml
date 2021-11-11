@@ -14,6 +14,7 @@ jobs:
       - uses: actions/setup-node@v2
       - name: Run a multi-line script
         run: |
+          cd ./trader
           npm install
           npm run build
   notifier-build:
@@ -22,5 +23,6 @@ jobs:
       - uses: actions/setup-node@v2
       - name: Run a multi-line script
         run: |
+          cd ./notifier
           npm install
           npm run build
