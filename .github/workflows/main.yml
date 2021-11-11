@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  trader-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+      - name: Run a multi-line script
+        run: |
+          npm install
+          npm run build
+  notifier-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+      - name: Run a multi-line script
+        run: |
+          npm install
+          npm run build
