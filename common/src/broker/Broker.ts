@@ -6,22 +6,19 @@ export class Broker {
     private static producer: Producer
     private static handlers: Map<string, Function> = new Map<string, Function>()
 
-    static async connect(): Promise<void> {
-        this.kafka = new Kafka({ brokers: ["kafka:9092"], clientId: "app" })
+    static async connect(brokers: string[]): Promise<void> {
+        this.kafka = new Kafka({ brokers, clientId: "app" })
 
         this.consumer = this.kafka.consumer({ groupId: '2' })
         await this.consumer.connect()
 
         this.producer = this.kafka.producer()
         await this.producer.connect()
-    }
 
-    static async listen(): Promise<void> {
         for (const [key] of this.handlers) {
-            console.log(key)
             await this.consumer.subscribe({ topic: key, fromBeginning: true })
         }
-        this.consumer.run({
+        await this.consumer.run({
             eachMessage: async ({ topic, partition, message }) => {
                 const handler = this.handlers.get(topic)
                 if (!handler) {

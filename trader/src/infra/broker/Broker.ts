@@ -1,53 +1,59 @@
-import { Kafka, Consumer, Producer } from "kafkajs"
+import {Kafka, Producer, EachMessagePayload,} from "kafkajs"
+import {randomUUID} from "crypto";
+import {Logger} from "../framework/logger";
+import {Config} from "../framework/config";
+
+export interface Subscription {
+	topic: string;
+	groupId: string; // Max parallelism when single
+}
 
 export class Broker {
 	private static kafka: Kafka
-	private static consumer: Consumer
 	private static producer: Producer
-	private static handlers: Map<string, Function> = new Map<string, Function>()
 
 	static async connect(): Promise<void> {
-		this.kafka = new Kafka({ brokers: ["kafka:9092"], clientId: "app" })
-
-		this.consumer = this.kafka.consumer({ groupId: "2" })
-		await this.consumer.connect()
+		this.kafka = new Kafka({
+			brokers: [Config.get("KAFKA_BROKER")],
+			clientId: Config.get("KAFKA_CLIENT_ID"),
+			logLevel: 0
+		})
+		const admin = this.kafka.admin()
+		const description = await admin.describeCluster()
+		console.log(description);
 
 		this.producer = this.kafka.producer()
 		await this.producer.connect()
 	}
 
-	static async listen(): Promise<void> {
-		for (const [key] of this.handlers) {
-			console.log(key)
-			await this.consumer.subscribe({ topic: key, fromBeginning: true })
-		}
-		this.consumer.run({
-			eachMessage: async ({ topic, partition, message }) => {
-				const handler = this.handlers.get(topic)
-				if (!handler) {
-					throw new Error("[Broker]: handler not found")
+	static async publish(topic: string, data?: unknown[]): Promise<void> {
+		if (!Broker.kafka) await Broker.connect()
+		const dataPackage = serializeData(data)
+		await Broker.producer.send({ topic, messages: [{ value: dataPackage }] })
+	}
+
+	static async subscribe(sub: Subscription, handler: Function): Promise<void> {
+		if (!Broker.kafka) await Broker.connect()
+		const consumer = Broker.kafka.consumer({ groupId: sub.groupId || randomUUID() })
+		await consumer.connect()
+		await consumer.subscribe({ topic: sub.topic })
+		await consumer.run({
+			eachMessage: async ({ topic, partition, message }: EachMessagePayload) => {
+				Logger.debug(`Broker handled: ${topic} from ${partition} with message ${message.value}`)
+				if (topic === sub.topic) {
+					const data = deserializeData(message.value!.toString())
+					await handler(data)
 				}
-				const parsedData: unknown = message.value ? JSON.parse(message.value) : undefined
-				handler(parsedData)
-			},
+			}
 		})
+		Logger.debug(`Broker subscribed to ${sub.topic} in ${sub.groupId}`)
 	}
+}
 
-	static async subscribe(topic: string, handler: Function): Promise<void> {
-		if (this.handlers.get(topic)) {
-			throw new Error(`[Broker]: topic already used`)
-		}
-		this.handlers.set(topic, handler)
-	}
+function serializeData(data?: unknown[]): string {
+	return data ? JSON.stringify(data) : JSON.stringify([])
+}
 
-	static async publish(topic: string, data?: unknown): Promise<void> {
-		await this.producer.send({
-			topic,
-			messages: [
-				{
-					value: data ? JSON.stringify(data) : [],
-				},
-			],
-		})
-	}
+function deserializeData(data: string): unknown[] {
+	return JSON.parse(data)
 }

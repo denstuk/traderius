@@ -1,15 +1,12 @@
-import { Broker } from "@traderius/common/lib/broker/Broker"
+import "./app/mq";
+import {Logger} from "./infra/framework";
 
 export class Application {
 	static async up(): Promise<void> {
-		await Broker.connect()
-		await Broker.listen()
+		Logger.info("Application started")
+	}
 
-		// TODO:Development - delete after testing
-		// setInterval(async () => {
-		//     await Broker.publish('traider.buyStock', { ticker: 'APPL', amount: 50 })
-		//     await Broker.publish('traider.buyStock', [{ ticker: 'APPL', amount: 1 }, { ticker: 'YNDX', amount: 2 }])
-		// }, 2000)
+	static async down(): Promise<void> {
+		Logger.info("Application started")
 	}
 }
-Application.up()
