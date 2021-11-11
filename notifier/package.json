@@ -29,7 +29,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@traderius/common": "file:../common",
+    "@traderius/common": "1.0.1",
     "dotenv": "^10.0.0",
     "node-telegram-bot-api": "^0.54.0",
     "pg": "^8.7.1",
