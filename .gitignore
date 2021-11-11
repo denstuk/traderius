@@ -5,3 +5,5 @@ node_modules
 NOTE
 *.temp.*
 ormconfig.json
+/docker/development/volumes
+.log
