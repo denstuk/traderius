@@ -26,5 +26,6 @@
     "removeComments": true,
     "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": ["tests"]
 }
