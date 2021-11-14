@@ -1,29 +1,22 @@
 import * as React from 'react';
+import { NewsBlock } from '../../components/NewsBlock/NewsBlock';
+import { INews } from '../../api/news/types';
+import useApi from '../../api/useApi';
 import './HomePage.css'
 
 export function HomePage() {
+    const { loading, data } = useApi<INews[]>({
+        method: "GET",
+        url: "http://localhost:4400/api/news"
+    });
+
     return (
         <div className="homepage">
             <h1 className="homepage__title">Денис Стук</h1>
             <h2>230 771 RUB</h2>
             <div className="homepage__panels">
                 <div className="homepage__news">
-                    <div className="news__block">
-                        <p className="news__title">AAPL рост в цена на 5%</p>
-                        <p className="news__subtitle">На закрытии бирже AAPL вырос в цена</p>
-                    </div>
-                    <div className="news__block">
-                        <p className="news__title">AAPL рост в цена на 5%</p>
-                        <p className="news__subtitle">На закрытии бирже AAPL вырос в цена</p>
-                    </div>
-                    <div className="news__block">
-                        <p className="news__title">AAPL рост в цена на 5%</p>
-                        <p className="news__subtitle">На закрытии бирже AAPL вырос в цена</p>
-                    </div>
-                    <div className="news__block">
-                        <p className="news__title">AAPL рост в цена на 5%</p>
-                        <p className="news__subtitle">На закрытии бирже AAPL вырос в цена</p>
-                    </div>
+                    { data && data.map((n) => <NewsBlock news={n} />) }
                 </div>
                 <div className="homepage__control">
                     <div className="notification__block">
