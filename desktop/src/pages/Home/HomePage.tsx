@@ -3,10 +3,9 @@ import './HomePage.css'
 
 export function HomePage() {
     return (
-    <div className="homepage">
-        <div>
-            <h1 className="homepage__title">Traderius</h1>
-            <h2>Система автоматического анализа и торговли на финансовом рынке</h2>
+        <div className="homepage">
+            <h1 className="homepage__title">Денис Стук</h1>
+            <h2>230 771 RUB</h2>
             <div className="homepage__panels">
                 <div className="homepage__news">
                     <div className="news__block">
@@ -39,6 +38,5 @@ export function HomePage() {
                 </div>
             </div>
         </div>
-    </div>
     )
 }

@@ -14,6 +14,9 @@ export const Navigation: React.FC = () => {
             <Link to="/wallet" className={pathname === "/wallet" ? "navigation__link active_link" : "navigation__link"}>
                 <FA name="wallet" />
             </Link>
+            <Link to="/auth" className={pathname === "/auth" ? "navigation__link active_link" : "navigation__link"}>
+                <FA name="user-lock" />
+            </Link>
         </div>
     )
 }

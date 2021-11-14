@@ -97,6 +97,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-fontawesome": "^1.7.1",
-    "react-router-dom": "^6.0.2"
+    "react-loader-spinner": "^4.0.0",
+    "react-router-dom": "^6.0.2",
+    "react-spinners": "^0.11.0",
+    "react-tsparticles": "^1.37.3"
   }
 }
