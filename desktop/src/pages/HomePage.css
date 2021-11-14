@@ -4,12 +4,6 @@
     flex-direction: row;
 }
 
-.navigation {
-    height: 100%;
-    width: 50px;
-    background-color: #1b1a1d;
-}
-
 .homepage__title {
     color: #665fec;
     font-weight: 500;

@@ -7,13 +7,25 @@
     outline: none;
 }
 
+.reset-all-styles {
+    all: initial;
+  }
+
+html, body, #root {
+    height: 100%;
+}
+
 body {
     color: white;
     background-color: #020210;
     font-weight: 200;
-    padding: 40px;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 200;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }
