@@ -1,4 +1,4 @@
-name: CI
+name: hub-ci
 
 on:
   push:
@@ -8,23 +8,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  trader-build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - name: Run a multi-line script
         run: |
-          cd trader
-          npm install
-          npm run build
-  notifier-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Run a multi-line script
-        run: |
-          cd notifier
+          cd hub
           npm install
           npm run build

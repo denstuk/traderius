@@ -1,4 +1,4 @@
-name: CI
+name: trader-ci
 
 on:
   push:
@@ -15,6 +15,6 @@ jobs:
       - uses: actions/setup-node@v2
       - name: Run a multi-line script
         run: |
-          cd hub
+          cd trader
           npm install
           npm run build
