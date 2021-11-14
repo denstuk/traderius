@@ -1,9 +1,19 @@
-import { Config } from "./infra/config";
+import { HttpServer } from "./app/http/httpServer";
+import { Database } from "./infra/database";
+import { Logger } from "./infra/logger";
+import { Redis } from "./infra/redis";
 
 export class Application {
     static async up(): Promise<void> {
-        console.log(Config.get("Env"));
+        Logger.info("Application started");
+        await Database.connect();
+        await Redis.connect();
+        await HttpServer.up();
     }
 
-    static async down(): Promise<void> {}
+    static async down(): Promise<void> {
+        await HttpServer.down();
+        await Database.disconnect();
+        Logger.info("Application closed");
+    }
 }
