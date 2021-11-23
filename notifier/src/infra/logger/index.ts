@@ -1,4 +1,4 @@
-import Pino from "pino"
+import Pino from "pino";
 
 export const Logger = Pino({
 	prettyPrint: {
@@ -13,4 +13,4 @@ export const Logger = Pino({
 		hideObject: false,
 		singleLine: true,
 	},
-})
+});

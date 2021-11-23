@@ -10,7 +10,7 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "semi": ["error", "never"],
+    "semi": ["error", "always"],
     "eol-last": ["error", "always"],
     "no-var": "error",
     "prefer-const": [
@@ -19,6 +19,9 @@
         "destructuring": "any",
         "ignoreReadBeforeAssign": true
       }
-    ]
+    ],
+    "@typescript-eslint/no-implicit-any-catch": ["error", { "allowExplicitAny": true }],
+    "no-console": "error",
+    "no-unused-expressions": "error"
   }
 }

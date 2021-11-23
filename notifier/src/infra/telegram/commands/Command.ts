@@ -1,4 +1,4 @@
-import { CommandType } from "./CommandType"
+import { CommandType } from "./CommandType";
 
 export abstract class Command<T> {
 	abstract type: CommandType

@@ -1,6 +1,6 @@
 export class Config {
 	static get(key: string): string {
-		return Config.store[key]
+		return Config.store[key];
 	}
 
 	static store: Record<string, string> = {
@@ -9,10 +9,10 @@ export class Config {
 	}
 
 	private static loadEnv(key: string): string {
-		const envVar = process.env[key]
+		const envVar = process.env[key];
 		if (!envVar) {
-			throw new Error(`Fatal Error: ${envVar} not provided`)
+			throw new Error(`Fatal Error: ${envVar} not provided`);
 		}
-		return envVar
+		return envVar;
 	}
 }
