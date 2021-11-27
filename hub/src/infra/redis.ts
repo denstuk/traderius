@@ -1,6 +1,4 @@
 import { injectable } from "inversify";
-import redis from "redis";
-import { Config } from "./config";
 import Keyv from "keyv";
 
 @injectable()
@@ -11,13 +9,13 @@ export class Redis {
         Redis.client = new Keyv(`redis://localhost:6379`);
     }
 
-    async set(key: string, value: object, ttl?: number): Promise<void> {
+    async set(key: string, value: Record<string, unknown>, ttl?: number): Promise<void> {
         const str = JSON.stringify(value);
         await Redis.client.set(key, str, ttl);
     }
 
     async getObject<T>(key: string): Promise<T | undefined> {
         const value = await Redis.client.get(key);
-        return value ? JSON.parse(value) as T : undefined
+        return value ? JSON.parse(value) as T : undefined;
     }
 }

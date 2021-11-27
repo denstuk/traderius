@@ -25,7 +25,7 @@ export class HttpServer {
             return new Promise<void>(res => {
                 this.server!.close(() => Logger.info("Server shutdowned"));
                 res();
-            })
+            });
         }
     }
 }

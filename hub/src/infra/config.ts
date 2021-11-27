@@ -12,7 +12,8 @@ export class Config extends BaseConfig {
         RedisPass: super.getEnvVar("REDIS_PASS"),
         ServiceId: super.getEnvVar("SERVICE_ID"),
         NewsRapidHost: super.getEnvVar("NEWS_RAPID_HOST"),
-        NewsRapidKey: super.getEnvVar("NEWS_RAPID_KEY")
+        NewsRapidKey: super.getEnvVar("NEWS_RAPID_KEY"),
+        Secret: super.getEnvVar("SECRET"),
     }
 
     static get<T extends string | number>(key: keyof typeof this.configVars): T {

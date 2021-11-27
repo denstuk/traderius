@@ -6,7 +6,7 @@ import path from "path";
 export class Logger {
 	private static logFormat = winston.format.printf((info: winston.Logform.TransformableInfo): string => {
 		const now = new Date().toISOString();
-		return `${now} ${Config.get<string>("ServiceId")} ${info.level.toUpperCase()} ${info.message}`
+		return `${now} ${Config.get<string>("ServiceId")} ${info.level.toUpperCase()} ${info.message}`;
 	});
 
 	private static rotationTransport = new winston.transports.DailyRotateFile({
@@ -27,14 +27,14 @@ export class Logger {
 	});
 
 	static info(message: string): void {
-		this.logger.info(message)
+		this.logger.info(message);
 	}
 
 	static debug(message: string): void {
-		this.logger.debug(message)
+		this.logger.debug(message);
 	}
 
 	static error(message: string): void {
-		this.logger.error(message)
+		this.logger.error(message);
 	}
 }

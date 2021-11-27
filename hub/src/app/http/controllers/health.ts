@@ -1,10 +1,11 @@
 import { Controller, Get, Response } from "@decorators/express";
 import * as express from "express";
+import { HttpResponse } from "../core/httpResponse";
 
 @Controller("/health")
 export class HealthController {
     @Get("/")
-    index(@Response() res: express.Response) {
+    async index(@Response() res: express.Response): Promise<HttpResponse> {
         return res.status(200).send();
     }
 }
