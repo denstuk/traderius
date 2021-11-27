@@ -14,6 +14,7 @@ export class Config extends BaseConfig {
         NewsRapidHost: super.getEnvVar("NEWS_RAPID_HOST"),
         NewsRapidKey: super.getEnvVar("NEWS_RAPID_KEY"),
         Secret: super.getEnvVar("SECRET"),
+        Port: Number(super.getEnvVar("PORT"))
     }
 
     static get<T extends string | number>(key: keyof typeof this.configVars): T {
