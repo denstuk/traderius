@@ -10,6 +10,8 @@ export class Database {
 			await Database.connection.runMigrations();
 
 			Logger.info("Database connected");
+
+			// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			Logger.error(error);
 		}

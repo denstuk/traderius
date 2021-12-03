@@ -11,13 +11,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Installation and build
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - name: use notifier
-        run: cd notifier
-      - name: install dependencies
-        run: npm install
-      - name: build
-        run: npm run build
-      - name: lint
-        run: npm run static:lint
+      - run: |
+          cd notifier
+          npm install
+          npm run build
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: |
+          cd notifier
+          npm run static:lint

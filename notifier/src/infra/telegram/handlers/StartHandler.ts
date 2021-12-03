@@ -4,7 +4,7 @@ import { User } from "../../../domain/users/entities/User";
 
 export class StartHandler {
 	static register(bot: TelegramBot): void {
-		bot.onText(/\/start/, async (msg: Message, match: RegExpExecArray | null): Promise<void> => {
+		bot.onText(/\/start/, async (msg: Message): Promise<void> => {
 			const chatId = msg.chat.id;
 			const username = msg.chat.username;
 
