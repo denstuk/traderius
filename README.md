@@ -11,7 +11,11 @@ About Services:
 - trader (gateway between stocks(crypto) market and system)  
 - predictor (data analysis and prediction for next solution)  
 - notifier (notification system)  
-- client (desktop application for monitoring)  
+- client (desktop application for monitoring) 
+
+### Project conventions
+
+- [Git commits convention](https://www.conventionalcommits.org/en/v1.0.0/)  
 
 ### How it is works?
 
