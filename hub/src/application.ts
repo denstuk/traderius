@@ -1,5 +1,5 @@
 import { HttpServer } from "./app/http/server";
-import { Database } from "./infra/database";
+import { Database } from "./infra/database/database";
 import { Logger } from "./infra/logger";
 import { Redis } from "./infra/redis";
 

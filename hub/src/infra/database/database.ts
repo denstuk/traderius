@@ -1,13 +1,13 @@
 import * as typeorm from "typeorm";
-import { Config } from "./config";
-import { Logger } from "./logger";
+import { Config } from "../config";
+import { Logger } from "../logger";
 
 export class Database {
     private static connection: typeorm.Connection;
 
     static async connect(): Promise<void> {
         const config = await typeorm.getConnectionOptions(Config.get<string>("Env"));
-        Database.connection = await typeorm.createConnection(config);
+        Database.connection = await typeorm.createConnection({ ...config, name: 'default' });
         Logger.info("Database connected");
     }
 
