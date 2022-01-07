@@ -1,6 +1,6 @@
 {
-  "name": "desktop",
-  "productName": "desktop",
+  "name": "@traderius/desktop",
+  "productName": "traderius",
   "version": "1.0.0",
   "description": "Traderius desktop application",
   "main": ".webpack/main",
@@ -11,7 +11,9 @@
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx ."
   },
-  "keywords": [],
+  "keywords": [
+    "Node.js"
+  ],
   "author": {
     "name": "denstuk",
     "email": "den.stuk00@gmail.com"
@@ -51,7 +53,7 @@
               "config": "./webpack.renderer.config.js",
               "entryPoints": [
                 {
-                  "html": "./src/index.html",
+                  "html": "./src/public/index.html",
                   "js": "./src/renderer.ts",
                   "name": "main_window"
                 }
@@ -93,6 +95,7 @@
     "@types/react-dom": "^17.0.11",
     "axios": "^0.24.0",
     "canvas-particle-network": "^1.5.0",
+    "dayjs": "^1.10.7",
     "electron-squirrel-startup": "^1.0.0",
     "express": "^4.17.1",
     "react": "^17.0.2",
