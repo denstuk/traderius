@@ -30,6 +30,7 @@ const createWindow = (): void => {
       webSecurity: false
     }
   });
+  mainWindow.setMenuBarVisibility(false);
 
   const handleRedirect = (e: any, url: any) => {
     if (url !== e.sender.getURL()) {
