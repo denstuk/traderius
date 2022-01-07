@@ -2,7 +2,7 @@ node_modules
 .vscode
 .idea
 .env
-NOTE
+NOTE.txt
 *.temp.*
 ormconfig.json
 /docker/development/volumes
