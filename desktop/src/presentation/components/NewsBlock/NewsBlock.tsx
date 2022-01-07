@@ -1,5 +1,5 @@
 import * as React from "react";
-import { INews } from "../../api/news/types";
+import { INews } from "../../../domain";
 
 interface INewsBlockProps {
     news: INews;

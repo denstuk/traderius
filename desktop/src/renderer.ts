@@ -26,8 +26,8 @@
  * ```
  */
 
-import "./styles/index.css";
+import "./presentation/styles/index.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import './app';
+import './presentation/app';
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');

@@ -23,6 +23,9 @@ const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
     height: 600,
     width: 900,
+    minWidth: 900,
+    minHeight: 600,
+    title: "Traderius",
     webPreferences: {
       webSecurity: false
     }
@@ -55,8 +58,6 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }

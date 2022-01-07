@@ -9,7 +9,7 @@
 
 .reset-all-styles {
     all: initial;
-  }
+}
 
 html, body, #root {
     height: 100%;

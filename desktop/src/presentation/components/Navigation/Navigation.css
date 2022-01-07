@@ -1,0 +1,14 @@
+.navigation {
+    width: 50px;
+    height: 100%;
+    background-color: #1b1a1d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    justify-content: space-between;
+}
+
+.navigation__group {
+    width: 100%;
+}

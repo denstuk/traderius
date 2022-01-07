@@ -2,12 +2,11 @@ import * as React from "react";
 import { Navigation } from "../Navigation/Navigation";
 import "./Page.css";
 
-interface IPageProps {
+interface PageProps {
     content: React.ReactNode
 }
 
-export const Page: React.FC<IPageProps> = (props: IPageProps) => {
-    const { content } = props;
+export const Page: React.FC<PageProps> = ({ content }: PageProps) => {
     return (
         <div className="page">
             <Navigation />

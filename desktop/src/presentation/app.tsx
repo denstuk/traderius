@@ -3,8 +3,9 @@ import * as ReactDOM from 'react-dom';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Page } from './components/Page/Page';
 import { Auth } from './pages/Auth/Auth';
-import { HomePage } from './pages/Home/HomePage';
-import { Wallet } from './pages/Wallet/Wallet';
+import { HomePage } from './pages/HomePage/HomePage';
+import { PredictionPage } from './pages/PredictionPage/PredictionPage';
+import { Wallet } from './pages/WalletPage/Wallet';
 
 const Application: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Application: React.FC = () => {
         <Routes>
           <Route path="/" element={<Page content={<HomePage />}/>} />
           <Route path="/wallet" element={<Page content={<Wallet />}/>} />
+          <Route path="/prediction" element={<Page content={<PredictionPage />} />} />
           <Route path="/auth" element={<Auth />} />
         </Routes>
       </HashRouter>
