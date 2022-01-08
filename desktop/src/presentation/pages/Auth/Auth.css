@@ -31,9 +31,7 @@
     font-weight: 400;
 }
 
-.auth__loader {
-    margin-top: 20px;
-}
+
 
 .auth__login {
     display: flex;
