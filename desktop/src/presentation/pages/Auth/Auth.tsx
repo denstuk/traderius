@@ -1,14 +1,14 @@
 import * as React from "react";
+import "./Auth.css";
 import { Network } from "../../components/Network/Network";
 import PropagateLoader from "react-spinners/PropagateLoader";
-import "./Auth.css";
 import { AuthForm } from "./AuthForm/AuthForm";
 
 export const Auth: React.FC = () => {
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
-        setTimeout(() => setLoading(false), 100)
+        setTimeout(() => setLoading(false), 1500)
     }, []);
 
     return (
