@@ -12,10 +12,10 @@ const Application: React.FC = () => {
     <React.Fragment>
       <HashRouter>
         <Routes>
-          <Route path="/" element={<Page content={<HomePage />}/>} />
+          <Route path="/home" element={<Page content={<HomePage />}/>} />
           <Route path="/wallet" element={<Page content={<Wallet />}/>} />
           <Route path="/prediction" element={<Page content={<PredictionPage />} />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route index element={<Auth />} />
         </Routes>
       </HashRouter>
     </React.Fragment>

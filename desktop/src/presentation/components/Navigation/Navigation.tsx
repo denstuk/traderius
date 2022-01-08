@@ -9,12 +9,12 @@ export const Navigation: React.FC = () => {
     return (
         <div className="navigation">
             <div className="navigation__group">
-                <NavigationLink icon={<FA name="home" />} pathTo="/" location={pathname} />
+                <NavigationLink icon={<FA name="home" />} pathTo="/home" location={pathname} />
                 <NavigationLink icon={<FA name="wallet" />} pathTo="/wallet" location={pathname} />
                 <NavigationLink icon={<FA name="chart-area" />} pathTo="/prediction" location={pathname} />
             </div>
             <div className="navigation__group">
-                <NavigationLink icon={<FA name="sign-out-alt" />} pathTo="/auth" location={pathname} />
+                <NavigationLink icon={<FA name="sign-out-alt" />} pathTo="/" location={pathname} />
             </div>
         </div>
     )
