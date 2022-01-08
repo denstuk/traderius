@@ -8,7 +8,7 @@ export class NewsMocker {
         for (let i = 0; i < amount; i++) {
             news.push({
                 id: String(NewsMocker.index),
-                title: "News name example " + NewsMocker.index,
+                title: "Stocks end in red, Nasdaq closes out worst week since Feb. 2021 " + NewsMocker.index,
                 link: "https://google.com",
                 pubDate: new Date().toDateString(),
                 source: "Shelby News Paper LTD"
