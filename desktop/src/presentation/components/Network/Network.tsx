@@ -7,7 +7,7 @@ export const Network: React.FC = () => {
             id="tsparticles"
             options={{
                 background: {
-                  opacity: 0
+                  opacity: 100
                 },
                 fpsLimit: 50,
                 interactivity: {
@@ -68,18 +68,18 @@ export const Network: React.FC = () => {
                     value: 120,
                   },
                   opacity: {
-                    value: 0.2,
+                    value: 1,
                   },
                   shape: {
-                    type: "edge",
+                    type: "circle",
                   },
                   size: {
                     random: true,
-                    value: 5,
+                    value: 3,
                   },
                 },
                 detectRetina: true,
-                zLayers: 1
+                zLayers: 2
               }}
         />
     )
