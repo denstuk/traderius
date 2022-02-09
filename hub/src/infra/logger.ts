@@ -1,12 +1,12 @@
 import * as winston from 'winston';
 import "winston-daily-rotate-file";
-import { Config } from './config';
 import path from "path";
+import { Configuration } from "./configuration";
 
 export class Logger {
 	private static logFormat = winston.format.printf((info: winston.Logform.TransformableInfo): string => {
 		const now = new Date().toISOString();
-		return `${now} ${Config.get<string>("ServiceId")} ${info.level.toUpperCase()} ${info.message}`;
+		return `${now} ${Configuration.get<string>("ServiceId")} ${info.level.toUpperCase()} ${info.message}`;
 	});
 
 	private static rotationTransport = new winston.transports.DailyRotateFile({
@@ -18,7 +18,7 @@ export class Logger {
 	});
 
 	private static logger = winston.createLogger({
-		level: Config.get<string>("Env") === "develop" ? 'http' : 'info',
+		level: Configuration.get<string>("Env") === "develop" ? 'http' : 'info',
 		format: winston.format.combine(Logger.logFormat),
 		transports: [
 			new winston.transports.Console(),
