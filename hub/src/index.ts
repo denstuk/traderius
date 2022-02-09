@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import "./infra/config";
+import "./infra/configuration/configuration";
 import { Application } from "./application";
 
 async function main(): Promise<void> {
