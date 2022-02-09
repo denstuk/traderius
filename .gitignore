@@ -7,5 +7,5 @@ NOTE.txt
 ormconfig.json
 /docker/development/volumes
 .log
-/dist
-/build
+dist
+build
