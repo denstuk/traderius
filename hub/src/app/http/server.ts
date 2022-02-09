@@ -3,8 +3,8 @@ import express from "express";
 import "express-async-errors";
 import { Logger } from "../../infra/logger";
 import { HttpRouter } from "./router";
-import { Config } from "../../infra/config";
 import { ErrorGuard } from "./guards/error.guard";
+import { Configuration } from "../../infra/configuration/configuration";
 
 export class HttpServer {
     private static server: http.Server | undefined;
@@ -15,11 +15,11 @@ export class HttpServer {
         HttpRouter.register(app);
         app.use(ErrorGuard);
         this.server = http.createServer(app);
-        this.server.listen(Config.get<number>("Port"), () => Logger.info("Server listening"));
+        this.server.listen(Configuration.get<number>("Port"), () => Logger.info("Server listening"));
     }
 
     static async down(): Promise<void> {
-        if (this.server) { 
+        if (this.server) {
             return new Promise<void>(res => {
                 this.server!.close(() => Logger.info("Server shutdowned"));
                 res();
