@@ -3,20 +3,15 @@ import { injectable } from "inversify";
 
 @injectable()
 export class PasswordService {
-    createHash(fromValue: string): string {
-        const salt = crypto.randomBytes(16).toString("hex");
-        const hash = crypto.scryptSync(fromValue, salt, 64).toString("hex");
-        return `${salt}:HTR:${hash}`;
-    }
+	createHash(fromValue: string): { salt: string, password: string } {
+		const salt = crypto.randomBytes(16).toString("hex");
+		const password = crypto.scryptSync(fromValue, salt, 64).toString("hex");
+		return { salt, password };
+	}
 
-    compareHashes(value: string, hash: string): boolean {
-        if (!hash.includes(":HTR:")) {
-            return false;
-        }
-        const [salt, key] = hash.split(":HTR:");
+    compareHashes(value: string, salt: string, hash: string): boolean {
         const hashedBuffer = crypto.scryptSync(value, salt, 64);
-
-        const keyBuffer = Buffer.from(key, "hex");
+        const keyBuffer = Buffer.from(hash, "hex");
         return crypto.timingSafeEqual(hashedBuffer, keyBuffer);
     }
 }
