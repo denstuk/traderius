@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-	"typeRoots": ["src/@types", "node_modules/@types"],
+	"typeRoots": ["src/app/http/@types", "node_modules/@types"],
 	/* Build */
 	"target": "es6",
 	"module": "commonjs",
