@@ -1,4 +1,4 @@
-import {INews} from "../../domain";
+import type { INews } from "../../domain";
 
 export class NewsMocker {
     private static index: number = 0;
