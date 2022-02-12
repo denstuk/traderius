@@ -1,16 +1,10 @@
-import "./infra/env";
+import "./infra";
 import { Application } from "./application";
 
-declare global {
-	interface Error {
-		message: string;
-	}
-}
+async function main(): Promise<void> {
+	await Application.up();
 
-function main(): Promise<void> {
-	return Application.start();
+	process.once("SIGINT", () => Application.down().then(() => process.exit(0)));
+	process.once("SIGTERM", () => Application.down().then(() => process.exit(0)));
 }
-main();
-
-process.on("SIGINT", () => Application.stop());
-process.on("SIGTERM", () => Application.stop());
+main().then();
