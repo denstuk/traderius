@@ -1,7 +1,5 @@
 import { HttpServer } from "./app/http/server";
-import { Database } from "./infra/database";
-import { Logger } from "./infra/logger";
-import { Redis } from "./infra/redis";
+import { Logger, Database, Redis } from "./infra";
 
 export class Application {
 	static async up(): Promise<void> {
