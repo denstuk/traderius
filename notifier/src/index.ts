@@ -1,5 +1,5 @@
 import "./infra/env";
-import { Application } from "./Application";
+import { Application } from "./application";
 
 declare global {
 	interface Error {

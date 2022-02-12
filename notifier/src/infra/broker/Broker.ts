@@ -1,7 +1,8 @@
 import {Kafka, Producer, EachMessagePayload,} from "kafkajs"
 import {randomUUID} from "crypto";
-import {Logger} from "../framework/logger";
-import {Config} from "../framework/config";
+import {Config} from "../config";
+import {Logger} from "../logger";
+
 
 export interface Subscription {
 	topic: string;
