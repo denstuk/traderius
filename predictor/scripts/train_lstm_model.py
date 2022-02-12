@@ -2,12 +2,15 @@ import math
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-import matplotlib.pyplot as plt
-from lstm.predictor import StockPricePredictor
+from lib.predictor import Predictor
+import os
 
 
-def main():
-    df = pd.read_csv("../public/a.csv")
+def train() -> None:
+    current_path: str = os.path.dirname(__file__)
+    path_to_data: str = os.sep.join([current_path, '..', 'static', 'MSFT.csv'])
+
+    df = pd.read_csv(path_to_data)
     data = df.filter(["Close"])
     dataset = data.values
     training_data_len = math.ceil(len(dataset) * .8)  # training set length
@@ -30,8 +33,8 @@ def main():
     # reshape the data
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
-    StockPricePredictor.build(x_train, y_train)
-    StockPricePredictor.save_model()
+    Predictor.build(x_train, y_train)
+    Predictor.save_model()
 
     # creating the testing data set
     test_data = scaled_data[training_data_len - 60:, :]
@@ -47,7 +50,7 @@ def main():
     x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 
     # Get predicted values
-    predictions = StockPricePredictor.predict(x_test)
+    predictions = Predictor.predict(x_test)
     predictions = scaler.inverse_transform(predictions)
 
     # Get the root mean squared error (RMSE)
@@ -57,15 +60,5 @@ def main():
     valid = data[training_data_len:]
     valid['Predictions'] = predictions
 
-    plt.figure(figsize=(16, 8))
-    plt.title("Model")
-    plt.xlabel("Date", fontsize=18)
-    plt.ylabel("Close Price USD", fontsize=18)
-    plt.plot(train["Close"])
-    plt.plot(valid[["Close", "Predictions"]])
-    plt.legend(["Train", "Valid", "Predictions"], loc="lower right")
-    plt.show()
 
-
-if __name__ == "__main__":
-    main()
+train()
