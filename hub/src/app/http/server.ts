@@ -1,10 +1,11 @@
 import http from "http";
 import express from "express";
 import "express-async-errors";
-import { Logger } from "../../infra/logger";
+import { Configuration, Logger } from "../../infra";
 import { HttpRouter } from "./router";
-import { ErrorGuard } from "./guards/error.guard";
-import { Configuration } from "../../infra";
+import { ErrorGuard } from "./middlewares/guards/error.guard";
+import {LogMiddleware} from "./middlewares/log.middleware";
+
 
 export class HttpServer {
 	private static server: http.Server | undefined;
@@ -30,6 +31,7 @@ export class HttpServer {
 
 	private static configure(app: express.Application): express.Application {
 		app.use(express.json({ limit: "20mb" }));
+		app.use(LogMiddleware);
 		HttpRouter.register(app);
 		app.use(ErrorGuard);
 		return app;

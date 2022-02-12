@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { HttpError } from "../core/http.error";
-import { Configuration } from "../../../infra";
-import { Logger } from "../../../infra/logger";
+import { HttpError } from "../../core/http.error";
+import { Configuration, Logger } from "../../../../infra";
 
 export const ErrorGuard = (err: Error, req: Request, res: Response, _: NextFunction) => {
 	Logger.error(err.message);

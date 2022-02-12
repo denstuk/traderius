@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { plainToClass } from "class-transformer";
 import { validate, ValidationError } from "class-validator";
-import { HttpError } from "../core/http.error";
-import { HttpStatus } from "../core/http-status.enum";
+import { HttpError } from "../../core/http.error";
+import { HttpStatus } from "../../core/http-status.enum";
 
 export const ValidationGuard = (dtoClass: any, type: "body" | "query"): any => {
 	return async (req: Request, res: Response, next: NextFunction): Promise<any> => {

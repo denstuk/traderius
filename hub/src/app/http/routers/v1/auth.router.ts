@@ -3,7 +3,7 @@ import { ioc } from "../../../../infra/ioc";
 import { AuthController } from "../../controllers/auth.controller";
 import { SignInDto } from "../../dtos/sign-in.dto";
 import { SignUpDto } from "../../dtos/sign-up.dto";
-import { ValidationGuard } from "../../guards/validation.guard";
+import {ValidationGuard} from "../../middlewares/guards/validation.guard";
 
 const router = express.Router();
 
