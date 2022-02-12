@@ -1,11 +1,17 @@
+.news-block {
+    color: white;
+    font-family: 'Montserrat', sans-serif
+}
+
 .news-block__date {
     color: #665fec;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .news-block__publisher {
     margin-top: 10px;
     font-weight: 600;
+    font-size: 36px;
 }
 
 .news-block__title {
@@ -17,4 +23,5 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin-top: 20px;
 }
