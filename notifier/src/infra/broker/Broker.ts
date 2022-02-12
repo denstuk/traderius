@@ -1,8 +1,7 @@
-import {Kafka, Producer, EachMessagePayload,} from "kafkajs"
-import {randomUUID} from "crypto";
-import {Config} from "../config";
-import {Logger} from "../logger";
-
+import { Kafka, Producer, EachMessagePayload } from "kafkajs"
+import { randomUUID } from "crypto";
+import { Logger } from "../logger";
+import {Configuration} from "../configuration";
 
 export interface Subscription {
 	topic: string;
@@ -15,8 +14,8 @@ export class Broker {
 
 	static async connect(): Promise<void> {
 		this.kafka = new Kafka({
-			brokers: [Config.get("KAFKA_BROKER")],
-			clientId: Config.get("KAFKA_CLIENT_ID"),
+			brokers: [Configuration.get<string>("KafkaBroker")],
+			clientId: Configuration.get<string>("KafkaClientId"),
 			logLevel: 0
 		})
 		const admin = this.kafka.admin()
