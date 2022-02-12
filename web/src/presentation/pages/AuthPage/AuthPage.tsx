@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./Auth.css";
+import "./AuthPage.scoped.sass";
 import { Network } from "../../components/Network/Network";
 import { AuthForm } from "./AuthForm/AuthForm";
 import { AuthLoader } from "./AuthLoader/AuthLoader";
