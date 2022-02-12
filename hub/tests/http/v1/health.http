@@ -1,0 +1,4 @@
+### Health
+GET http://localhost:9801/api/v1/health HTTP/1.1
+Content-Type: application/json
+
