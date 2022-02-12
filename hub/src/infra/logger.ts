@@ -1,4 +1,4 @@
-import * as winston from 'winston';
+import * as winston from "winston";
 import "winston-daily-rotate-file";
 import path from "path";
 import { Configuration } from "./configuration";
@@ -10,20 +10,17 @@ export class Logger {
 	});
 
 	private static rotationTransport = new winston.transports.DailyRotateFile({
-		filename: path.join(process.cwd(), '.log', 'app-%DATE%.log'),
-		datePattern: 'YYYY-MM-DD-HH',
+		filename: path.join(process.cwd(), ".log", "app-%DATE%.log"),
+		datePattern: "YYYY-MM-DD-HH",
 		zippedArchive: true,
-		maxSize: '20m',
-		maxFiles: '14d'
+		maxSize: "20m",
+		maxFiles: "14d",
 	});
 
 	private static logger = winston.createLogger({
-		level: Configuration.get<string>("Env") === "develop" ? 'http' : 'info',
+		level: Configuration.get<string>("Env") === "develop" ? "http" : "info",
 		format: winston.format.combine(Logger.logFormat),
-		transports: [
-			new winston.transports.Console(),
-			Logger.rotationTransport
-		]
+		transports: [new winston.transports.Console(), Logger.rotationTransport],
 	});
 
 	static info(message: string): void {

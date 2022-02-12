@@ -22,8 +22,9 @@ export class Configuration {
 		NewsRapidKey: this.getEnvVar("NEWS_RAPID_KEY"),
 		Secret: this.getEnvVar("SECRET"),
 		Port: Number(this.getEnvVar("PORT")),
+		Host: this.getEnvVar("HOST"),
 		TinkoffApiUrl: this.getEnvVar("TINKOFF_API_URL"),
 		TinkoffWsUrl: this.getEnvVar("TINKOFF_WS_URL"),
-		TinkoffSharedToken: this.getEnvVar("TINKOFF_SHARED_TOKEN")
-	}
+		TinkoffSharedToken: this.getEnvVar("TINKOFF_SHARED_TOKEN"),
+	};
 }

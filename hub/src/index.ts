@@ -3,9 +3,9 @@ import "./infra/configuration/configuration";
 import { Application } from "./application";
 
 async function main(): Promise<void> {
-    await Application.up();
+	await Application.up();
 
-    process.once("SIGINT", () => Application.down().then(() => process.exit(0)));
+	process.once("SIGINT", () => Application.down().then(() => process.exit(0)));
 	process.once("SIGTERM", () => Application.down().then(() => process.exit(0)));
 }
 main().then();

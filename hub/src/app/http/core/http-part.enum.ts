@@ -1,4 +1,4 @@
 export enum HttpPart {
-    Body = 1,
-    Query,
+	Body = 1,
+	Query,
 }
