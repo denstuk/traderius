@@ -5,4 +5,5 @@ export interface IConfiguration {
 	ServiceId: string;
 	KafkaBroker: string;
 	KafkaClientId: string;
+	TelegramToken: string;
 }

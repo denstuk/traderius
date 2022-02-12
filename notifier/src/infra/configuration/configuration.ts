@@ -18,6 +18,7 @@ export class Configuration {
 		Port: Number(this.getEnvVar("PORT")),
 		Host: this.getEnvVar("HOST"),
 		KafkaBroker: this.getEnvVar("KAFKA_BROKER"),
-		KafkaClientId: this.getEnvVar("KAFKA_CLIENT_ID")
+		KafkaClientId: this.getEnvVar("KAFKA_CLIENT_ID"),
+		TelegramToken: this.getEnvVar("TELEGRAM_TOKEN")
 	};
 }
