@@ -3,14 +3,15 @@ import axios, { AxiosRequestConfig } from "axios";
 
 export function useApi<T>(config: AxiosRequestConfig<any>) {
   const [loading, setLoading] = useState(true)
-  const [data, setData] = useState<T>(null)
+  const [data, setData] = useState<T | undefined>(undefined)
 
-  const fetchApi = () => {
-    axios(config).then(response => {
-        console.log(response.data);
-        setLoading(false);
-        setData(response.data);
-    });
+  const fetchApi = async () => {
+      const response = await axios({
+          ...config,
+
+      });
+      setLoading(false);
+      setData(response.data);
   };
 
   useEffect(() => {
