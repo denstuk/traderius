@@ -24,4 +24,10 @@ export class UserEntity extends ApplicationEntity {
 
 	@Column("varchar", { nullable: true, name: "tinkoff_market_token" })
 	tinkoffMarketToken!: string;
+
+	@Column("boolean", { nullable: false, name: "notification_enabled", default: false })
+	notificationEnabled!: boolean;
+
+	@Column("varchar", { nullable: true, name: "telegram_name" })
+	telegramName!: string;
 }

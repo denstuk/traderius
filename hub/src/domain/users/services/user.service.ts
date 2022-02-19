@@ -24,4 +24,8 @@ export class UserService {
 		sql.andWhere("user.strategy in (:...strategies)", { strategies });
 		return sql.getMany();
 	}
+
+	async save(entity: UserEntity): Promise<UserEntity> {
+		return this.userRepo.save(entity);
+	}
 }
