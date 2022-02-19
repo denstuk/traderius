@@ -8,6 +8,7 @@ export class Database {
 	static async connect(): Promise<void> {
 		const config = await typeorm.getConnectionOptions(Configuration.get<string>("Env"));
 		Database.connection = await typeorm.createConnection({ ...config, name: "default" });
+		await Database.connection.runMigrations();
 		Logger.info("Database connected");
 	}
 
