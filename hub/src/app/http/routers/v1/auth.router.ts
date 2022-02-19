@@ -1,8 +1,8 @@
 import express, { Request, Response } from "express";
 import { ioc } from "../../../../infra/ioc";
 import { AuthController } from "../../controllers/auth.controller";
-import { SignInDto } from "../../dtos/sign-in.dto";
-import { SignUpDto } from "../../dtos/sign-up.dto";
+import { SignInDto } from "../../dtos/auth/sign-in.dto";
+import { SignUpDto } from "../../dtos/auth/sign-up.dto";
 import {ValidationGuard} from "../../middlewares/guards/validation.guard";
 
 const router = express.Router();
