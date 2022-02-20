@@ -2,7 +2,7 @@ import { inject, injectable } from "inversify";
 import { Regressor } from "../../../domain/analysis/regressor";
 import { Configuration, TinkoffMarket } from "../../../infra";
 import { PricePoint } from "../../../domain/analysis/analysis.types";
-import { Predictor } from "../../../infra";
+import { Predictor } from "../../../infra/predictor";
 
 @injectable()
 export class AnalysisController {
