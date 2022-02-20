@@ -28,6 +28,6 @@ export class UserEntity extends ApplicationEntity {
 	@Column("boolean", { nullable: false, name: "notification_enabled", default: false })
 	notificationEnabled!: boolean;
 
-	@Column("varchar", { nullable: true, name: "telegram_name" })
-	telegramName!: string;
+	@Column("boolean", { nullable: false, name: "automated_trading_enabled", default: false })
+	automatedTradingEnabled!: boolean;
 }

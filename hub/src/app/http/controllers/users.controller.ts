@@ -4,6 +4,7 @@ import {UpdateStrategyDto} from "../dtos/users/update-strategy.dto";
 import {UserEntity} from "../../../domain/users/entities/user.entity";
 import {UpdateNotificationsEnabledDto} from "../dtos/users/update-notifications-enabled.dto";
 import {UpdateTinkoffMarketTokenDto} from "../dtos/users/update-tinkoff-market-token.dto";
+import {UpdateAutomatedTradingEnabledDto} from "../dtos/users/update-automated-trading-enabled.dto";
 
 @injectable()
 export class UsersController {
@@ -16,6 +17,11 @@ export class UsersController {
 
 	async updateNotificationsEnabled(data: UpdateNotificationsEnabledDto, user: UserEntity): Promise<void> {
 		user.notificationEnabled = data.notificationEnabled;
+		await this.userService.save(user);
+	}
+
+	async updateAutomatedTradingEnabled(data: UpdateAutomatedTradingEnabledDto, user: UserEntity): Promise<void> {
+		user.automatedTradingEnabled = data.automatedTradingEnabled;
 		await this.userService.save(user);
 	}
 

@@ -5,6 +5,7 @@ import { NewsRouter } from "./routers/v1/news.router";
 import { AuthRouter } from "./routers/v1/auth.router";
 import { AnalysisRouter } from "./routers/v1/analysis.router";
 import { StocksRouter } from "./routers/v1/stocks.router";
+import { UsersRouter } from "./routers/v1/users.router";
 
 export class HttpRouter {
 	static register(app: express.Application): void {
@@ -15,6 +16,7 @@ export class HttpRouter {
 		httpRouter.use("/news", NewsRouter);
 		httpRouter.use("/analysis", AnalysisRouter);
 		httpRouter.use("/stocks", StocksRouter);
+		httpRouter.use("/users", UsersRouter);
 		app.use("/api/v1", httpRouter);
 	}
 }
