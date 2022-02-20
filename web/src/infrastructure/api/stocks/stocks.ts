@@ -1,7 +1,7 @@
-import { BaseApi } from "../base-api";
-import { IGetLastMonthStocks } from "./stocks.types";
 import axios from "axios";
-import {ICandle} from "../../../domain";
+import { BaseApi } from "../base-api";
+import type { IGetLastMonthStocks } from "./stocks.types";
+import type { ICandle } from "../../../domain";
 
 export class StocksApi extends BaseApi {
     static getLastMonth(data: IGetLastMonthStocks): Promise<ICandle[] | undefined> {
