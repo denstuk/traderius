@@ -1,5 +1,5 @@
 import React from "react";
-import "./AuthLoader.css";
+import "./AuthLoader.scoped.sass";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 type AuthLoaderProps = { loading: boolean };

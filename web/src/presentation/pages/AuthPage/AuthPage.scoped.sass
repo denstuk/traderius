@@ -1,22 +1,22 @@
-.auth
-  display: flex
-  z-index: 10
+.auth-page
   width: 100%
   height: 100%
-  justify-content: center
-  align-items: center
-  flex-direction: column
 
-.auth__network
-  opacity: 0.3
-
-.auth__wrapper
+.auth-form
+  position: absolute
+  left: 0
+  height: 100%
+  width: 400px
+  background-color: #1b1a1d
+  z-index: 5
+  color: white
+  box-sizing: border-box
+  padding: 100px 50px 50px
   display: flex
   flex-direction: column
-  max-width: 400px
   align-items: center
-  justify-content: center
-  text-align: center
+  font-family: 'Montserrat', sans-serif
+  box-shadow: 0 0 5px 1px #323036
 
 .auth__title
   font-size: 32px
@@ -25,11 +25,20 @@
   font-size: 20px
   color: #665fec
   font-weight: 400
-
-.auth__login
   display: flex
-  flex-direction: column
-  background-color: #1b1a1d
-  padding: 10px
-  margin-top: 20px
-  border-radius: 5px
+  text-align: center
+
+@media screen and (max-width: 670px)
+  .auth-form
+    left: 10%
+    right: 10%
+    top: 40px
+    margin-bottom: 20px
+    width: 80%
+    height: calc(100% - 80px)
+
+  .auth-page__background
+    position: absolute
+    z-index: -5
+    width: 100%
+
