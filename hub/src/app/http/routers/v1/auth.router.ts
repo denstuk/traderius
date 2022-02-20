@@ -5,6 +5,7 @@ import { SignInDto } from "../../dtos/auth/sign-in.dto";
 import { SignUpDto } from "../../dtos/auth/sign-up.dto";
 import {ValidationGuard} from "../../middlewares/guards/validation.guard";
 import {AuthGuard} from "../../middlewares/guards/auth.guard";
+import {UserMapper} from "../../../../domain/users/user.mapper";
 
 const router = express.Router();
 
@@ -19,7 +20,8 @@ router.post("/sign-up", [ValidationGuard(SignUpDto, "body")], async (req: Reques
 });
 
 router.get("/me", [AuthGuard], async (req: Request, res: Response) => {
-	return res.status(200).send(req.user);
+	const dto = ioc.resolve(UserMapper).mapToDto(req.user!);
+	return res.status(200).send(dto);
 });
 
 export { router as AuthRouter };

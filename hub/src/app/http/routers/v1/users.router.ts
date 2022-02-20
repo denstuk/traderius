@@ -30,4 +30,9 @@ router.patch("/me/tinkoff-market-token", [AuthGuard, ValidationGuard(UpdateTinko
 	return res.status(200).send();
 });
 
+router.get("/me/balance", [AuthGuard], async (req: Request, res: Response) => {
+	const result = await ioc.resolve(UsersController).getTinkoffBalance(req.user!);
+	return res.status(200).send(result);
+});
+
 export { router as UsersRouter };
