@@ -1,3 +1,8 @@
+export enum UserStrategy {
+    None = 1,
+    Automated
+}
+
 export interface INews {
     id: string;
     title: string;
@@ -10,6 +15,9 @@ export interface IUser {
     id: string;
     login: string;
     email: string;
+    notificationEnabled: boolean;
+    automatedTradingEnabled: boolean;
+    strategy: UserStrategy;
 }
 
 export interface IBalance {
