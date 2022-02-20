@@ -1,6 +1,6 @@
 import axios from "axios";
-import {PredictionResponse} from "./predictor.types";
-import {injectable} from "inversify";
+import { PredictionResponse } from "./predictor.types";
+import { injectable } from "inversify";
 
 @injectable()
 export class Predictor {

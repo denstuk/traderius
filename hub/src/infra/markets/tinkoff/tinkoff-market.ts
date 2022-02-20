@@ -3,7 +3,7 @@ import OpenAPI, {
 	Currencies,
 	MarketInstrument,
 	MarketInstrumentList,
-	Portfolio
+	Portfolio,
 } from "@tinkoff/invest-openapi-js-sdk";
 import { Configuration } from "../../configuration";
 import dayjs from "dayjs";

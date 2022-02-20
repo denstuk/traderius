@@ -4,8 +4,7 @@ import "express-async-errors";
 import { Configuration, Logger } from "../../infra";
 import { HttpRouter } from "./router";
 import { ErrorGuard } from "./middlewares/guards/error.guard";
-import {LogMiddleware} from "./middlewares/log.middleware";
-
+import { LogMiddleware } from "./middlewares/log.middleware";
 
 export class HttpServer {
 	private static server: http.Server | undefined;

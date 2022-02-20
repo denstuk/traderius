@@ -3,9 +3,9 @@ import { ioc } from "../../../../infra/ioc";
 import { AuthController } from "../../controllers/auth.controller";
 import { SignInDto } from "../../dtos/auth/sign-in.dto";
 import { SignUpDto } from "../../dtos/auth/sign-up.dto";
-import {ValidationGuard} from "../../middlewares/guards/validation.guard";
-import {AuthGuard} from "../../middlewares/guards/auth.guard";
-import {UserMapper} from "../../../../domain/users/user.mapper";
+import { ValidationGuard } from "../../middlewares/guards/validation.guard";
+import { AuthGuard } from "../../middlewares/guards/auth.guard";
+import { UserMapper } from "../../../../domain/users/user.mapper";
 
 const router = express.Router();
 

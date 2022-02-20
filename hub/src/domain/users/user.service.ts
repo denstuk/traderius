@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { getRepository } from "typeorm";
 import { UserEntity } from "./entities/user.entity";
-import {UserStrategy} from "./users.types";
+import { UserStrategy } from "./users.types";
 
 @injectable()
 export class UserService {
@@ -20,7 +20,7 @@ export class UserService {
 	}
 
 	getUsersWithStrategy(strategies: UserStrategy[]): Promise<UserEntity[]> {
-		const sql = this.userRepo.createQueryBuilder('user');
+		const sql = this.userRepo.createQueryBuilder("user");
 		sql.andWhere("user.strategy in (:...strategies)", { strategies });
 		return sql.getMany();
 	}

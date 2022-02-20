@@ -6,15 +6,12 @@ import { Predictor } from "../../../infra/predictor";
 
 @injectable()
 export class AnalysisController {
-	constructor(
-		@inject(Regressor) private regressor: Regressor,
-		@inject(Predictor) private predictor: Predictor
-	) {}
+	constructor(@inject(Regressor) private regressor: Regressor, @inject(Predictor) private predictor: Predictor) {}
 
 	async analysis({ ticker }: { ticker: string }): Promise<{
 		points: PricePoint[];
-		regressions: { linear: PricePoint; polynomial: PricePoint; };
-		lstm: { lstm30: number, lstm7: number };
+		regressions: { linear: PricePoint; polynomial: PricePoint };
+		lstm: { lstm30: number; lstm7: number };
 	}> {
 		const market = new TinkoffMarket(Configuration.get("TinkoffSharedToken"));
 		const historical = await market.history(ticker);

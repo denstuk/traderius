@@ -1,6 +1,6 @@
 export enum UserStrategy {
 	None = 1,
-	Automated
+	Automated,
 }
 
 export interface IUpdateUser {

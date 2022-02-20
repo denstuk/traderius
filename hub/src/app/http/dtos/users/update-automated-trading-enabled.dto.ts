@@ -1,4 +1,4 @@
-import {IsBoolean, IsDefined} from "class-validator";
+import { IsBoolean, IsDefined } from "class-validator";
 
 export class UpdateAutomatedTradingEnabledDto {
 	@IsDefined()

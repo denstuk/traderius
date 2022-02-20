@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import Keyv from "keyv";
-import {Configuration} from "./configuration";
+import { Configuration } from "./configuration";
 
 @injectable()
 export class Redis {

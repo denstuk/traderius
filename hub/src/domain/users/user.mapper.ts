@@ -1,6 +1,6 @@
-import {injectable} from "inversify";
-import {UserDto} from "./dtos/user.dto";
-import {UserEntity} from "./entities/user.entity";
+import { injectable } from "inversify";
+import { UserDto } from "./dtos/user.dto";
+import { UserEntity } from "./entities/user.entity";
 
 @injectable()
 export class UserMapper {
