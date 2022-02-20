@@ -11,7 +11,7 @@ export const UserInfoConnectionsForm: React.FC<UserInfoConnectionsForm> = ({ use
     const [notificationsEnabled, setNotificationsEnabled] = React.useState(user.notificationEnabled);
 
     const handleChangeNotificationEnabled = async (next: boolean): Promise<void> => {
-        await UsersApi.updateNotificationEnabled({ notificationsEnabled: next });
+        await UsersApi.updateNotificationEnabled({ notificationEnabled: next });
         setNotificationsEnabled(next);
     }
     const handleChangeAutomatedTradingEnabled = async (next: boolean): Promise<void> => {
@@ -20,14 +20,16 @@ export const UserInfoConnectionsForm: React.FC<UserInfoConnectionsForm> = ({ use
     }
 
     return <div className="user-connections-form">
-        <div className="switcher">
-            <Switch
-                onChange={(next) => handleChangeAutomatedTradingEnabled(next)}
-                checked={automatedTradingEnabled}
-                className="react-switch"
-            />
-            <p>Подключить автоматическую торговлю</p>
-        </div>
+        { user.tinkoffMarketTokenConnected && (
+            <div className="switcher">
+                <Switch
+                    onChange={(next) => handleChangeAutomatedTradingEnabled(next)}
+                    checked={automatedTradingEnabled}
+                    className="react-switch"
+                />
+                <p>Подключить автоматическую торговлю</p>
+            </div>
+        ) }
         <div className="switcher">
             <Switch
                 onChange={(next) => handleChangeNotificationEnabled(next)}

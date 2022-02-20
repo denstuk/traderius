@@ -13,7 +13,7 @@ export const UserPage: React.FC = () => {
         <PageTitle text="Личный кабинет" />
         <div className="user-page__form-wrapper">
             <div className="user-page__form">
-                <UserBalanceBadge balance={balance} />
+                { state.user && state.user.tinkoffMarketTokenConnected && <UserBalanceBadge balance={balance} /> }
                 { state.user && <UserInfoBadge user={state.user} /> }
             </div>
         </div>
