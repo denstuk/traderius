@@ -9,7 +9,6 @@ export class TokenService {
 	}
 
 	verify<T>(token: string): T {
-		const payload = jwt.verify(token, Configuration.get<string>("Secret")) as string;
-		return JSON.parse(payload) as T;
+		return jwt.verify(token, Configuration.get<string>("Secret")) as T;
 	}
 }
