@@ -8,42 +8,69 @@ import {
 	Tooltip,
 	YAxis,
 	XAxis,
-	CartesianGrid,
+	CartesianGrid, ResponsiveContainer,
 } from "recharts";
+import { StocksApi } from "../../../infrastructure/api/stocks/stocks";
+import dayjs from "dayjs";
 
-const data = [
-	{ pv: 1, uv: 0 },
-	{ pv: 2, uv: 1 },
-	{ pv: 5, uv: 1 },
-	{ pv: 1.3, uv: 2 },
-	{ pv: 3, uv: 2 },
-];
-
-const stocksData = [30, 30.1, 31, 29, 32, 35, 40, 36, 35, 34].map((i) => {
-	return { price: i };
-});
+interface IStock {
+	price: number;
+	time: string;
+}
 
 export const AnalyticsPage: React.FC = () => {
+	const [ticker, setTicker] = React.useState("");
+	const [stocks, setStocks] = React.useState<IStock[]>([]);
+
+	const onTickerChange = (value: string) => setTicker(value);
+
+	const onAnalysisBtnClick = async (): Promise<void> => {
+		if (!ticker || ticker === "") return;
+		const result = await StocksApi.getLastMonth.bind(StocksApi)({ ticker });
+		if (result) {
+			const mapped = result.map((i) => {
+				return { price: i.c, time: dayjs(i.time).format("MM-DD") }
+			});
+			setStocks(mapped);
+		}
+	}
+
+	function getMinPrice<T extends { price: number }>(array: T[] | undefined): number {
+		if (!array) return 0;
+		if (array.length === 0) return 0;
+		let min = array[0].price;
+		for (const item of array) {
+			if (min > item.price) min = item.price;
+		}
+		return min;
+	}
+	function getMaxPrice<T extends { price: number }>(array: T[] | undefined): number {
+		if (!array) return 0;
+		if (array.length === 0) return 0;
+		let max = array[0].price;
+		for (const item of array) {
+			if (max < item.price) max = item.price;
+		}
+		return max;
+	}
+
+
 	return (
 		<div className="analytics">
 			<PageTitle text="Аналитика" />
-			<PredictionForm />
+			<PredictionForm setTicker={onTickerChange} ticker={ticker} onAnalysisClick={onAnalysisBtnClick} />
 
-			<LineChart margin={{ top: 50 }} width={500} height={300} data={data}>
-				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis dataKey="name" />
-				<YAxis />
-				<Line type="monotone" dataKey="pv" stroke="#8884d8" />
-				<Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-			</LineChart>
-
-			<LineChart width={500} height={300} data={stocksData}>
-				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis from={stocksData[0].price} dataKey="name" />
-				<YAxis domain={[20, 40]} />
-				<Tooltip />
-				<Line type="monotone" dataKey="price" stroke="#665fec" />
-			</LineChart>
+			{ !stocks || stocks.length !== 0 && (
+				<ResponsiveContainer width="100%" height={400}>
+					<LineChart margin={{ top: 50 }} width={500} height={300} data={stocks}>
+						<CartesianGrid strokeDasharray="3 3" opacity={0.1} />
+						<XAxis dataKey="time" />
+						<YAxis domain={[getMinPrice(stocks) - 5, getMaxPrice(stocks) + 5]} />
+						<Line type="monotone" dataKey="price" stroke="#ff0000" strokeWidth={2} />
+						<Tooltip />
+					</LineChart>
+				</ResponsiveContainer>
+			) }
 		</div>
 	);
 };
