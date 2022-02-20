@@ -18,6 +18,13 @@ export interface IUser {
     notificationEnabled: boolean;
     automatedTradingEnabled: boolean;
     strategy: UserStrategy;
+    tinkoffMarketTokenConnected: boolean;
+}
+
+export interface IAnalysis {
+    points: PricePoint[];
+    regressions: { linear: PricePoint; polynomial: PricePoint; };
+    lstm: { lstm30: number, lstm7: number };
 }
 
 export interface IBalance {
@@ -36,3 +43,19 @@ export interface ICandle {
     interval: string;
     figi: string;
 }
+
+export declare type Currencies = {
+    currencies: CurrencyPosition[];
+};
+
+export declare type CurrencyPosition = {
+    currency: Currency;
+    balance: number;
+    blocked?: number;
+};
+
+export declare type Currency = "RUB" | "USD" | "EUR" | "GBP" | "HKD" | "CHF" | "JPY" | "CNY" | "TRY";
+export declare type InstrumentType = "Stock" | "Currency" | "Bond" | "Etf";
+export declare type Index = number;
+export declare type Price = number;
+export declare type PricePoint = [Index, Price];
