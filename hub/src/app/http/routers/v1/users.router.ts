@@ -7,8 +7,14 @@ import {UsersController} from "../../controllers/users.controller";
 import {UpdateNotificationsEnabledDto} from "../../dtos/users/update-notifications-enabled.dto";
 import {UpdateTinkoffMarketTokenDto} from "../../dtos/users/update-tinkoff-market-token.dto";
 import {UpdateAutomatedTradingEnabledDto} from "../../dtos/users/update-automated-trading-enabled.dto";
+import {UpdateUserDto} from "../../dtos/users/update-user.dto";
 
 const router = express.Router();
+
+router.put("/me", [AuthGuard, ValidationGuard(UpdateUserDto, "body")], async (req: Request, res: Response) => {
+	const result = await ioc.resolve(UsersController).updateUser(req.body, req.user!);
+	return res.status(200).send(result);
+});
 
 router.patch("/me/strategy", [AuthGuard, ValidationGuard(UpdateStrategyDto, "body")], async (req: Request, res: Response) => {
 	await ioc.resolve(UsersController).updateStrategy(req.body, req.user!);

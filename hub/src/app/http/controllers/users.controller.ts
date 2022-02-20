@@ -1,5 +1,5 @@
 import {inject, injectable} from "inversify";
-import {UserService} from "../../../domain/users/services/user.service";
+import {UserService} from "../../../domain/users/user.service";
 import {UpdateStrategyDto} from "../dtos/users/update-strategy.dto";
 import {UserEntity} from "../../../domain/users/entities/user.entity";
 import {UpdateNotificationsEnabledDto} from "../dtos/users/update-notifications-enabled.dto";
@@ -9,10 +9,16 @@ import {TinkoffMarket} from "../../../infra";
 import {HttpError} from "../core/http.error";
 import {HttpStatus} from "../core/http-status.enum";
 import {Currencies} from "@tinkoff/invest-openapi-js-sdk";
+import {UserDto} from "../../../domain/users/dtos/user.dto";
+import {UpdateUserDto} from "../dtos/users/update-user.dto";
+import {UserMapper} from "../../../domain/users/user.mapper";
 
 @injectable()
 export class UsersController {
-	constructor(@inject(UserService) private userService: UserService) {}
+	constructor(
+		@inject(UserService) private userService: UserService,
+		@inject(UserMapper) private userMapper: UserMapper
+	) {}
 
 	async updateStrategy(data: UpdateStrategyDto, user: UserEntity): Promise<void> {
 		user.strategy = data.automatedTradingEnabled;
@@ -38,5 +44,19 @@ export class UsersController {
 		if (!user.tinkoffMarketToken) throw new HttpError(HttpStatus.Forbidden, "Tinkoff market not connected");
 		const market = new TinkoffMarket(user.tinkoffMarketToken);
 		return await market.balance();
+	}
+
+	async updateUser(data: UpdateUserDto, user: UserEntity): Promise<UserDto> {
+		if (data.email && user.email !== data.email) {
+			const existedUser = await this.userService.getByCredential(data.email, undefined);
+			if (existedUser) throw new HttpError(HttpStatus.Conflict, "Email or login already taken");
+		}
+		if (data.login && user.login !== data.login) {
+			const existedUser = await this.userService.getByCredential(undefined, data.login);
+			if (existedUser) throw new HttpError(HttpStatus.Conflict, "Email or login already taken");
+		}
+
+		const afterUpdate = await this.userService.update(user.id, data);
+		return this.userMapper.mapToDto(afterUpdate);
 	}
 }

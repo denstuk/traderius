@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { getRepository } from "typeorm";
-import { UserEntity } from "../entities/user.entity";
-import {UserStrategy} from "../users.types";
+import { UserEntity } from "./entities/user.entity";
+import {UserStrategy} from "./users.types";
 
 @injectable()
 export class UserService {
@@ -27,5 +27,17 @@ export class UserService {
 
 	async save(entity: UserEntity): Promise<UserEntity> {
 		return this.userRepo.save(entity);
+	}
+
+	async update(id: string, dto: Partial<UserEntity>): Promise<UserEntity> {
+		const user = await this.userRepo.findOneOrFail(id);
+		if (dto.login) {
+			user.login = dto.login;
+		}
+		if (dto.email) {
+			user.email = dto.email;
+		}
+		await this.userRepo.save(user);
+		return user;
 	}
 }

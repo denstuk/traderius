@@ -1,6 +1,6 @@
 import {CronJob} from "cron";
 import {Configuration, ioc, Thread, TinkoffMarket} from "../../infra";
-import {UserService} from "../../domain/users/services/user.service";
+import {UserService} from "../../domain/users/user.service";
 import {UserStrategy} from "../../domain/users/users.types";
 import {Predictor} from "../../infra/predictor";
 
