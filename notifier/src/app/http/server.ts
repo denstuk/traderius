@@ -2,6 +2,7 @@ import http from "http";
 import express from "express";
 import { Logger } from "../../infra/logger";
 import { Configuration } from "../../infra";
+import { HttpRouterV1 } from "./router";
 
 export class HttpServer {
 	private static server: http.Server | undefined;
@@ -26,6 +27,7 @@ export class HttpServer {
 
 	private static configure(app: express.Application): express.Application {
 		app.use(express.json({ limit: "20mb" }));
+		HttpRouterV1.register(app);
 		return app;
 	}
 }

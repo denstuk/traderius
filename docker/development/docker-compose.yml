@@ -46,6 +46,7 @@ services:
     - 9090:9090
     expose:
       - 9801
+      - 9803
     command:
     - --config.file=/etc/prometheus/prometheus.yml
     volumes:

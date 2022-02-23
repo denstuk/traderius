@@ -4,3 +4,8 @@ scrape_configs:
     static_configs:
       - targets: ['host.docker.internal:9801']
     metrics_path: /api/v1/metrics/
+  - job_name: "notifier-health"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['host.docker.internal:9803']
+    metrics_path: /api/v1/metrics/
