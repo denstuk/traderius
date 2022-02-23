@@ -14,7 +14,7 @@ export class Broker {
 
 	static async connect(): Promise<void> {
 		this.kafka = new Kafka({
-			brokers: [Configuration.get<string>("KafkaBroker")],
+			brokers: [Configuration.get<string>("KafkaServer")],
 			clientId: Configuration.get<string>("KafkaClientId"),
 			logLevel: 0
 		})

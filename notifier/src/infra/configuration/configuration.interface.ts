@@ -3,7 +3,7 @@ export interface IConfiguration {
 	Port: number;
 	Host: string;
 	ServiceId: string;
-	KafkaBroker: string;
+	KafkaServer: string;
 	KafkaClientId: string;
 	TelegramToken: string;
 }
