@@ -1,7 +1,7 @@
 {
   "name": "@traderius/hub",
   "version": "1.0.0",
-  "description": "",
+  "description": "API Gateway, authentication and authorization provider",
   "main": "index.js",
   "scripts": {
     "start:prod": "node ./dist/index.js",
@@ -11,8 +11,8 @@
     "format": "prettier src/**/*.ts --write"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Denis Stuk <den.stuk00@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/dotenv": "^8.2.0",
