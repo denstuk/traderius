@@ -50,6 +50,7 @@
     "jsonwebtoken": "^8.5.1",
     "keyv": "^4.0.4",
     "pg": "^8.7.1",
+    "prom-client": "^14.0.1",
     "regression": "^2.0.1",
     "rimraf": "^2.7.1",
     "typeorm": "^0.2.40",

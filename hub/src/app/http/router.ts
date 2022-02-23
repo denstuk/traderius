@@ -6,8 +6,9 @@ import { AuthRouter } from "./routers/v1/auth.router";
 import { AnalysisRouter } from "./routers/v1/analysis.router";
 import { StocksRouter } from "./routers/v1/stocks.router";
 import { UsersRouter } from "./routers/v1/users.router";
+import { MetricsRouter } from "./routers/v1/metrics.router";
 
-export class HttpRouter {
+export class HttpRouterV1 {
 	static register(app: express.Application): void {
 		const httpRouter = express.Router();
 		httpRouter.use(cors());
@@ -17,6 +18,7 @@ export class HttpRouter {
 		httpRouter.use("/analysis", AnalysisRouter);
 		httpRouter.use("/stocks", StocksRouter);
 		httpRouter.use("/users", UsersRouter);
+		httpRouter.use("/metrics", MetricsRouter);
 		app.use("/api/v1", httpRouter);
 	}
 }
