@@ -6,7 +6,7 @@ import { injectable } from "inversify";
 export class Regressor {
 	calculateLinear(points: PricePoint[]): PricePoint {
 		const regressor = regression.linear(points);
-		return regressor.predict(points.length);
+		return regressor.predict(points.length + 1);
 	}
 
 	calculatePolynomial(points: PricePoint[]): PricePoint {
