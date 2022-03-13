@@ -8,7 +8,8 @@
     "start:dev": "ts-node-dev ./src/index.ts",
     "build": "rimraf ./dist && tsc",
     "test:unit": "jest -c jest.config.json --forceExit",
-    "format": "prettier src/**/*.ts --write"
+    "format": "prettier src/**/*.ts --write",
+	"lint": "eslint . --ext .ts"
   },
   "keywords": [],
   "author": "Denis Stuk <den.stuk00@gmail.com>",

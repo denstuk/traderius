@@ -20,6 +20,7 @@ module.exports = {
         ],
         "@typescript-eslint/no-implicit-any-catch": ["error", { "allowExplicitAny": true }],
         "no-console": "error",
-        "no-unused-expressions": "error"
+        "no-unused-expressions": "error",
     },
+    ignorePatterns: ["*.test.ts"],
 };
