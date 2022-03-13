@@ -1,7 +1,7 @@
-import { Kafka, Producer, EachMessagePayload } from "kafkajs"
+import { Kafka, Producer, EachMessagePayload } from "kafkajs";
 import { randomUUID } from "crypto";
 import { Logger } from "../logger";
-import {Configuration} from "../configuration";
+import { Configuration } from "../configuration";
 
 export interface Subscription {
 	topic: string;
@@ -17,43 +17,40 @@ export class Broker {
 			brokers: [Configuration.get<string>("KafkaServer")],
 			clientId: Configuration.get<string>("KafkaClientId"),
 			logLevel: 0
-		})
-		const admin = this.kafka.admin()
-		const description = await admin.describeCluster()
-		console.log(description);
-
-		this.producer = this.kafka.producer()
-		await this.producer.connect()
+		});
+		this.producer = this.kafka.producer();
+		await this.producer.connect();
 	}
 
 	static async publish(topic: string, data?: unknown[]): Promise<void> {
-		if (!Broker.kafka) await Broker.connect()
-		const dataPackage = serializeData(data)
-		await Broker.producer.send({ topic, messages: [{ value: dataPackage }] })
+		if (!Broker.kafka) await Broker.connect();
+		const dataPackage = serializeData(data);
+		await Broker.producer.send({ topic, messages: [{ value: dataPackage }] });
 	}
 
-	static async subscribe(sub: Subscription, handler: Function): Promise<void> {
-		if (!Broker.kafka) await Broker.connect()
-		const consumer = Broker.kafka.consumer({ groupId: sub.groupId || randomUUID() })
-		await consumer.connect()
-		await consumer.subscribe({ topic: sub.topic })
+	static async subscribe(sub: Subscription, handler: (...args: unknown[]) => Promise<unknown>): Promise<void> {
+		if (!Broker.kafka) await Broker.connect();
+		const consumer = Broker.kafka.consumer({ groupId: sub.groupId || randomUUID() });
+		await consumer.connect();
+		await consumer.subscribe({ topic: sub.topic });
 		await consumer.run({
 			eachMessage: async ({ topic, partition, message }: EachMessagePayload) => {
-				Logger.debug(`Broker handled: ${topic} from ${partition} with message ${message.value}`)
+				Logger.debug(`Broker handled: ${topic} from ${partition} with message ${message.value}`);
 				if (topic === sub.topic) {
-					const data = deserializeData(message.value!.toString())
-					await handler(data)
+					if (!message.value) return;
+					const data = deserializeData(message.value.toString());
+					await handler(data);
 				}
 			}
-		})
-		Logger.debug(`Broker subscribed to ${sub.topic} in ${sub.groupId}`)
+		});
+		Logger.debug(`Broker subscribed to ${sub.topic} in ${sub.groupId}`);
 	}
 }
 
 function serializeData(data?: unknown[]): string {
-	return data ? JSON.stringify(data) : JSON.stringify([])
+	return data ? JSON.stringify(data) : JSON.stringify([]);
 }
 
 function deserializeData(data: string): unknown[] {
-	return JSON.parse(data)
+	return JSON.parse(data);
 }

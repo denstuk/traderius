@@ -9,6 +9,7 @@ export class Configuration {
 
 	private static getEnvVar(key: string): string {
 		if (process.env[key] === undefined) throw new Error(`Config: missing environment variable ${key}`);
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		return process.env[key]!;
 	}
 

@@ -19,7 +19,7 @@ export class HttpServer {
 	static async down(): Promise<void> {
 		if (this.server) {
 			return new Promise<void>((res) => {
-				this.server!.close(() => Logger.info("Server shutdowned"));
+				this.server?.close(() => Logger.info("Server shutdowned"));
 				res();
 			});
 		}
