@@ -1,2 +1,2 @@
-const defaultConfig = require("../conventions/eslint");
+const defaultConfig = require("../conventions/.eslintrc");
 module.exports = defaultConfig;
