@@ -1,4 +1,5 @@
-import { ioc, Redis } from "../../../src/infra";
+import { ioc } from "../../../src/ioc";
+import { Redis } from "../../../src/infra";
 
 describe("Infrastructure: Redis", () => {
 	const redis = ioc.resolve(Redis);

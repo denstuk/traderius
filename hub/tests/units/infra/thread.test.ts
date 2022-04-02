@@ -1,4 +1,5 @@
-import { ioc, Thread } from "../../../src/infra";
+import { ioc } from "../../../src/ioc";
+import { Thread } from "../../../src/infra";
 
 describe("Infrastructure: Thread", () => {
 	const thread = ioc.resolve(Thread);

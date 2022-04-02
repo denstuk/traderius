@@ -1,4 +1,4 @@
-import { ioc } from "../../../src/infra";
+import { ioc } from "../../../src/ioc";
 import { UserService } from "../../../src/domain/users/user.service";
 import { DatabaseTest } from "../../infra/database-test";
 import { TestUser1Data } from "../../data/users.store";

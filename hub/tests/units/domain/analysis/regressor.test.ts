@@ -1,5 +1,5 @@
-import {ioc} from "../../../../src/infra";
-import {Regressor} from "../../../../src/domain/analysis/regressor";
+import { ioc } from "../../../../src/ioc";
+import { Regressor } from "../../../../src/domain/analysis/regressor";
 
 describe("Domain: Analysis: Regressor", () => {
 	const regressor = ioc.resolve(Regressor);

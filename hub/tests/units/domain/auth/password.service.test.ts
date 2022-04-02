@@ -1,4 +1,4 @@
-import {ioc} from "../../../../src/infra";
+import { ioc } from "../../../../src/ioc";
 import { PasswordService } from "../../../../src/domain/shared/password.service";
 
 describe("Domain: Authorization: PasswordService", () => {
