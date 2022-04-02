@@ -16,30 +16,10 @@ import { AnalysisApi } from "../../../infrastructure/api/analysis/analysis";
 import type { IAnalysis } from "../../../domain";
 import {AnalysisResultBadge} from "./AnalysisResultBadge/AnalysisResultBadge";
 import {Toaster} from "../../../domain/services/toaster";
+import {findMaxByField, findMinByField} from "../../../domain";
 
 type IStock = { open: number; close: number, time: string; }
 type IStockForPredictionGraph = { price?: number; predicted?: number, time: string; }
-
-function findMinByField<T>(items: T[], keys: (keyof T)[]): number {
-	let min = items[0][keys[0]];
-	for (const item of items) {
-		for (const key of keys) {
-			if (!item[key]) continue;
-			if (item[key] < min) min = item[key];
-		}
-	}
-	return min as unknown as number;
-}
-function findMaxByField<T>(items: T[], keys: (keyof T)[]): number {
-	let max = items[0][keys[0]];
-	for (const item of items) {
-		for (const key of keys) {
-			if (!item[key]) continue;
-			if (item[key] > max) max = item[key];
-		}
-	}
-	return max as unknown as number;
-}
 
 export const AnalyticsPage: React.FC = () => {
 	const [ticker, setTicker] = React.useState("");
@@ -91,7 +71,7 @@ export const AnalyticsPage: React.FC = () => {
 				<ResponsiveContainer width="100%" height={400}>
 					<LineChart margin={{ top: 50 }} width={500} height={300} data={stocksForMainGraph}>
 						<CartesianGrid strokeDasharray="3 3" opacity={0.1} />
-						<XAxis dataKey="time" />
+						<XAxis padding={{ left: 10, right: 10 }} dataKey="time" />
 						<YAxis domain={[
 							findMinByField(stocksForMainGraph, ['open', 'close']) - 5,
 							findMaxByField(stocksForMainGraph, ['open', 'close']) + 5
