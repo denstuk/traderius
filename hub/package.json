@@ -7,9 +7,10 @@
     "start:prod": "node ./dist/index.js",
     "start:dev": "ts-node-dev ./src/index.ts",
     "build": "rimraf ./dist && tsc",
-    "test:unit": "jest -c jest.config.json --forceExit",
+    "test:unit": "jest -c jest.unit.config.js --forceExit",
+    "test:integration": "jest -c jest.integration.config.js --forceExit",
     "format": "prettier src/**/*.ts --write",
-	"lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts"
   },
   "keywords": [],
   "author": "Denis Stuk <den.stuk00@gmail.com>",
@@ -54,8 +55,7 @@
     "prom-client": "^14.0.1",
     "regression": "^2.0.1",
     "rimraf": "^2.7.1",
-    "sqlite3": "^5.0.2",
-    "typeorm": "^0.2.40",
+    "typeorm": "^0.2.41",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5"
   }

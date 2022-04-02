@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /app/notifier
+WORKDIR /app/hub
 
 COPY package.json .
 

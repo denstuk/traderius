@@ -5,8 +5,8 @@
 		"host": "localhost",
 		"port": 5432,
 		"username": "postgres",
-		"password": "password",
-		"database": "traderius_hub",
+		"password": "Pa$$word12!",
+		"database": "traderius",
 		"synchronize": true,
 		"dropSchema": false,
 		"entities": [
