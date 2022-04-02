@@ -1,6 +1,13 @@
+import path from "path";
 import dotenv from "dotenv";
 import type { IConfiguration } from "./configuration.interface";
-dotenv.config();
+
+const root = path.join(__dirname, "../../../");
+if (process.env["NODE_ENV"] === "test") {
+	dotenv.config({ path: path.join(root, ".env.test") });
+} else {
+	dotenv.config({ path: path.join(root, ".env") });
+}
 
 export class Configuration {
 	static get<T extends string | number>(key: keyof IConfiguration): T {
@@ -8,7 +15,9 @@ export class Configuration {
 	}
 
 	private static getEnvVar(key: string): string {
-		if (process.env[key] === undefined) throw new Error(`Config: missing environment variable ${key}`);
+		if (process.env["NODE_ENV"] !== "test" && process.env[key] === undefined) {
+			throw new Error(`Config: missing environment variable ${key}`);
+		}
 		return process.env[key]!;
 	}
 
