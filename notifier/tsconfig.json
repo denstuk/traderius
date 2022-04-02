@@ -1,24 +1,3 @@
 {
-  "compilerOptions": {
-	/* Build */
-	"target": "es6",
-	"module": "commonjs",
-	"outDir": "./dist",
-	"removeComments": true,
-    "incremental": true,
-
-	/* Features */
-	"experimentalDecorators": true,
-	"emitDecoratorMetadata": true,
-
-	/* Interop Constraints */
-	"esModuleInterop": true,
-	"forceConsistentCasingInFileNames": true,
-	"allowSyntheticDefaultImports": true,
-
-	/* Type Checking */
-	"strict": true,
-	"skipLibCheck": true
-  },
-	"exclude": ["node_modules", "dist"]
+	"extends": "../conventions/tsconfig.json"
 }
