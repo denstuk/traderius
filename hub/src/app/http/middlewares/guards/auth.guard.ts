@@ -13,8 +13,10 @@ export const AuthGuard = async (req: Request, res: Response, next: NextFunction)
 
 	const payload = ioc.resolve(TokenService).verify<{ id: string }>(token);
 
-	req.user = await getRepository(UserEntity).findOne({ id: payload.id });
+	const user = await getRepository(UserEntity).findOne({ id: payload.id });
 	if (!req.user) throw new HttpError(403, `User not found`);
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	req.user = user!;
 
 	next();
 };

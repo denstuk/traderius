@@ -20,7 +20,7 @@ router.post("/sign-up", [ValidationGuard(SignUpDto, "body")], async (req: Reques
 });
 
 router.get("/me", [AuthGuard], async (req: Request, res: Response) => {
-	const dto = ioc.resolve(UserMapper).mapToDto(req.user!);
+	const dto = ioc.resolve(UserMapper).mapToDto(req.user);
 	return res.status(200).send(dto);
 });
 
