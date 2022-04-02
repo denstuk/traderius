@@ -1,15 +1,24 @@
+import { injectable } from "inversify";
 import { HttpServer } from "./app/http/server";
-import { Logger, Database, Redis } from "./infra";
+import { Database, Logger, Redis } from "./infra";
 
+@injectable()
 export class Application {
-	static async up(): Promise<void> {
+	async up(): Promise<void> {
 		Logger.info("Application started");
-		await Database.connect();
-		await Redis.connect();
-		await HttpServer.up();
+		try {
+			await Database.connect();
+			await Redis.connect();
+			await HttpServer.up();
+		} catch (err: unknown) {
+			if (err instanceof Error) {
+				Logger.error(err.message);
+			}
+			await this.down();
+		}
 	}
 
-	static async down(): Promise<void> {
+	async down(): Promise<void> {
 		await HttpServer.down();
 		await Database.disconnect();
 		Logger.info("Application closed");

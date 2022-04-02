@@ -1,4 +1,4 @@
 import "reflect-metadata";
-import "../src/infra/ioc";
+import "../src/ioc";
 
 jest.setTimeout(1000 * 60);

@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { ioc } from "../../../../infra/ioc";
+import { ioc } from "../../../../ioc";
 import { AuthController } from "../../controllers/auth.controller";
 import { SignInDto } from "../../dtos/auth/sign-in.dto";
 import { SignUpDto } from "../../dtos/auth/sign-up.dto";
