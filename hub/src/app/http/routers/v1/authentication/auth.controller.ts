@@ -1,11 +1,11 @@
 import { inject, injectable } from "inversify";
-import { PasswordService } from "../../../domain/shared/password.service";
-import { TokenService } from "../../../domain/shared/token.service";
-import { UserService } from "../../../domain/users/user.service";
-import { HttpStatus } from "../core/http-status.enum";
-import { HttpError } from "../core/http.error";
-import { SignInDto } from "../dtos/auth/sign-in.dto";
-import { SignUpDto } from "../dtos/auth/sign-up.dto";
+import { PasswordService } from "../../../../../domain/shared/password.service";
+import { TokenService } from "../../../../../domain/shared/token.service";
+import { UserService } from "../../../../../domain/users/user.service";
+import { HttpStatus } from "../../../core/http-status.enum";
+import { HttpError } from "../../../core/http.error";
+import { SignInDto } from "../../../dtos/auth/sign-in.dto";
+import { SignUpDto } from "../../../dtos/auth/sign-up.dto";
 
 @injectable()
 export class AuthController {

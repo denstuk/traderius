@@ -1,5 +1,5 @@
 import { CronJob } from "cron";
-import { Configuration, ioc, Thread, TinkoffMarket } from "../../infra";
+import { Configuration, ioc, Logger, Thread, TinkoffMarket } from "../../infra";
 import { UserService } from "../../domain/users/user.service";
 import { UserStrategy } from "../../domain/users/users.types";
 import { Predictor } from "../../infra/predictor";
@@ -67,7 +67,7 @@ export class AutomatedTradingScheduler {
 					forSell.push(prediction);
 				}
 			}
-			console.log(forSell);
+			Logger.info(JSON.stringify(forSell));
 		}
 	}
 }

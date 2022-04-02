@@ -1,19 +1,20 @@
 import * as inversify from "inversify";
-import { AuthController } from "./app/http/controllers/auth.controller";
+import { AuthController } from "./app/http/routers/v1/authentication/auth.controller";
 import { PasswordService } from "./domain/shared/password.service";
 import { TokenService } from "./domain/shared/token.service";
 import { UserService } from "./domain/users/user.service";
 import { Redis } from "./infra/redis";
 import { Regressor } from "./domain/analysis/regressor";
-import { AnalysisController } from "./app/http/controllers/analysis.controller";
+import { AnalysisController } from "./app/http/routers/v1/analysis/analysis.controller";
 import { StocksNews } from "./infra/news";
-import { UsersController } from "./app/http/controllers/users.controller";
+import { UsersController } from "./app/http/routers/v1/users/users.controller";
 import { Predictor } from "./infra/predictor";
 import { Thread } from "./infra/thread";
 import { RoiCalculator } from "./domain/analysis/roi-calculator";
 import { UserMapper } from "./domain/users/user.mapper";
 import { AnalyzeStocksScheduler } from "./app/schedulers/analyze-stocks.scheduler";
 import { Application } from "./application";
+import {HttpServer} from "./app/http/server";
 
 const container = new inversify.Container();
 
@@ -32,6 +33,9 @@ container.bind<UserService>(UserService).toSelf().inSingletonScope();
 container.bind<UserMapper>(UserMapper).toSelf().inSingletonScope();
 container.bind<Regressor>(Regressor).toSelf().inSingletonScope();
 container.bind<RoiCalculator>(RoiCalculator).toSelf().inSingletonScope();
+
+/* Application */
+container.bind<HttpServer>(HttpServer).toSelf().inSingletonScope();
 
 /* Controllers */
 container.bind<AuthController>(AuthController).toSelf().inRequestScope();

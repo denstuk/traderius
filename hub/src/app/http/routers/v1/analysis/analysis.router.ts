@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
-import { ioc } from "../../../../infra";
-import { AnalysisController } from "../../controllers/analysis.controller";
+import { ioc } from "../../../../../ioc";
+import { AnalysisController } from "./analysis.controller";
 
 const router = express.Router();
 

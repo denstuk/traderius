@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
-import { ioc, StocksNews } from "../../../../infra";
+import { ioc } from "../../../../../ioc";
+import { StocksNews } from "../../../../../infra";
 
 const router = express.Router();
 
