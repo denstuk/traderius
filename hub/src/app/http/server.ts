@@ -1,16 +1,17 @@
 import http from "http";
 import express from "express";
 import "express-async-errors";
+import cors from "cors";
 import { Configuration, Logger } from "../../infra";
 import { ErrorGuard } from "./middlewares/guards/error.guard";
 import { LogMiddleware } from "./middlewares/log.middleware";
-import cors from "cors";
 import { RouterV1 } from "./routers/v1/router-v1";
 import { ioc } from "../../ioc";
 import { injectable } from "inversify";
 
 @injectable()
 export class HttpServer {
+	private readonly logger: Logger = ioc.resolve(Logger);
 	private server: http.Server | undefined;
 
 	async start(): Promise<void> {
@@ -20,7 +21,7 @@ export class HttpServer {
 		const application = this.buildExpressApplication();
 
 		this.server = http.createServer(application);
-		this.server.listen(port, () => Logger.info(`Server started on http://${host}:${port}`));
+		this.server.listen(port, () => this.logger.info(`Server started on http://${host}:${port}`));
 	}
 
 	private buildExpressApplication(): express.Application {

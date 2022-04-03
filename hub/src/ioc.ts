@@ -14,11 +14,13 @@ import { RoiCalculator } from "./domain/analysis/roi-calculator";
 import { UserMapper } from "./domain/users/user.mapper";
 import { AnalyzeStocksScheduler } from "./app/schedulers/analyze-stocks.scheduler";
 import { Application } from "./application";
-import {HttpServer} from "./app/http/server";
+import { HttpServer } from "./app/http/server";
+import { Logger } from "./infra";
 
 const container = new inversify.Container();
 
 container.bind<Application>(Application).toSelf().inSingletonScope();
+container.bind<Logger>(Logger).toSelf().inSingletonScope();
 
 /* Infrastructure */
 container.bind<Redis>(Redis).toSelf().inSingletonScope();

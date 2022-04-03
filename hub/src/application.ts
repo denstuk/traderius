@@ -1,19 +1,22 @@
 import { injectable } from "inversify";
 import { HttpServer } from "./app/http/server";
 import { Database, Logger, Redis } from "./infra";
-import {ioc} from "./ioc";
+import { ioc } from "./ioc";
 
 @injectable()
 export class Application {
+	private readonly logger = ioc.resolve(Logger);
+
 	async up(): Promise<void> {
-		Logger.info("Application started");
+		this.logger.info("Application started");
+
 		try {
 			await Database.connect();
 			await Redis.connect();
 			await ioc.resolve(HttpServer).start();
 		} catch (err: unknown) {
 			if (err instanceof Error) {
-				Logger.error(err.message);
+				this.logger.fatal(err.message);
 			}
 			await this.down();
 		}
@@ -21,6 +24,6 @@ export class Application {
 
 	async down(): Promise<void> {
 		await Database.disconnect();
-		Logger.info("Application closed");
+		this.logger.info("Application closed");
 	}
 }

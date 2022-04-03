@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { Logger } from "../../../infra";
+import { ioc } from "../../../ioc";
 
 export const LogMiddleware = (req: Request, res: Response, next: NextFunction): void => {
 	const url = req.url;
@@ -7,5 +8,5 @@ export const LogMiddleware = (req: Request, res: Response, next: NextFunction): 
 	next();
 	const time = Date.now() - start;
 
-	Logger.info(`HTTP - ${res.statusCode} ${url} ${time}ms`);
+	ioc.resolve(Logger).info(`HTTP - ${res.statusCode} ${url} ${time}ms`);
 };

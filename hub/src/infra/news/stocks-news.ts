@@ -3,20 +3,22 @@ import { inject, injectable } from "inversify";
 import { Logger } from "../logger";
 import { Redis } from "../redis";
 import { Configuration } from "../configuration";
+import { ioc } from "../../ioc";
 import type { INews } from "./stocks-news.types";
 
 @injectable()
 export class StocksNews {
+	private readonly logger: Logger = ioc.resolve(Logger);
 	private readonly defaultNewsTtl: number = 1000 * 60 * 60 * 24;
 	private readonly redisKey = (date: Date) => `StocksNews:${date.toLocaleDateString()}`;
 
 	constructor(@inject(Redis) private redis: Redis) {}
 
 	async fetch(): Promise<INews[]> {
-		Logger.debug("StocksNews: trying receive news from redis");
+		this.logger.debug("StocksNews: trying receive news from redis");
 		const news = await this.fetchFromRedis();
 		if (news) return news;
-		Logger.debug("StocksNews: redis does not contain news fallback to request");
+		this.logger.debug("StocksNews: redis does not contain news fallback to request");
 		return this.fetchFromWebSite();
 	}
 
