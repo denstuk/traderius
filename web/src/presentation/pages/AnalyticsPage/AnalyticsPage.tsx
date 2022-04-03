@@ -39,7 +39,7 @@ export const AnalyticsPage: React.FC = () => {
 		if (!analysisResponse) return Toaster.error("Не получилось получить аналитику по активу");
 
 		const convertedStocks = stocksResponse.map((candle) => {
-			return { open: candle.o, close: candle.c, time: dayjs(candle.time) }
+			return { open: candle.open, close: candle.close, time: dayjs(candle.time) }
 		});
 
 		const forMainGraph = convertedStocks.map((stock) => { return { ...stock, time: stock.time.format("MM-DD") } });

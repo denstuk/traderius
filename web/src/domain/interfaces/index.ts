@@ -33,12 +33,18 @@ export interface IBalance {
     rub: number;
 }
 
+export interface IProfitableStock {
+    ticker: string;
+    predicted: number;
+    growthPercent: number;
+}
+
 export interface ICandle {
-    o: number;
-    c: number;
-    h: number;
-    l: number;
-    v: number;
+    open: number;
+    close: number;
+    high: number;
+    low: number;
+    volume: number;
     time: Date;
     interval: string;
     figi: string;
@@ -59,3 +65,5 @@ export declare type InstrumentType = "Stock" | "Currency" | "Bond" | "Etf";
 export declare type Index = number;
 export declare type Price = number;
 export declare type PricePoint = [Index, Price];
+
+
