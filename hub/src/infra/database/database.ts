@@ -3,7 +3,7 @@ import { Logger } from "../logger";
 import { Configuration } from "../configuration";
 
 export class Database {
-	private static connection: typeorm.Connection;
+	protected static connection: typeorm.Connection;
 
 	static async connect(): Promise<void> {
 		const config = await typeorm.getConnectionOptions(Configuration.get<string>("Env"));
