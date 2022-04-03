@@ -1,13 +1,13 @@
 import express, { Request, Response } from "express";
 import { AuthGuard } from "../../../middlewares/guards/auth.guard";
 import { ValidationGuard } from "../../../middlewares/guards/validation.guard";
-import { UpdateStrategyDto } from "../../../dtos/users/update-strategy.dto";
+import { UpdateStrategyDto } from "./dtos/update-strategy.dto";
 import { ioc } from "../../../../../ioc";
 import { UsersController } from "./users.controller";
-import { UpdateNotificationsEnabledDto } from "../../../dtos/users/update-notifications-enabled.dto";
-import { UpdateTinkoffMarketTokenDto } from "../../../dtos/users/update-tinkoff-market-token.dto";
-import { UpdateAutomatedTradingEnabledDto } from "../../../dtos/users/update-automated-trading-enabled.dto";
-import { UpdateUserDto } from "../../../dtos/users/update-user.dto";
+import { UpdateNotificationsEnabledDto } from "./dtos/update-notifications-enabled.dto";
+import { UpdateTinkoffMarketTokenDto } from "./dtos/update-tinkoff-market-token.dto";
+import { UpdateAutomatedTradingEnabledDto } from "./dtos/update-automated-trading-enabled.dto";
+import { UpdateUserDto } from "./dtos/update-user.dto";
 
 const router = express.Router();
 

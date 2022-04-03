@@ -1,16 +1,16 @@
 import { inject, injectable } from "inversify";
 import { UserService } from "../../../../../domain/users/user.service";
-import { UpdateStrategyDto } from "../../../dtos/users/update-strategy.dto";
+import { UpdateStrategyDto } from "./dtos/update-strategy.dto";
 import { UserEntity } from "../../../../../domain/users/entities/user.entity";
-import { UpdateNotificationsEnabledDto } from "../../../dtos/users/update-notifications-enabled.dto";
-import { UpdateTinkoffMarketTokenDto } from "../../../dtos/users/update-tinkoff-market-token.dto";
-import { UpdateAutomatedTradingEnabledDto } from "../../../dtos/users/update-automated-trading-enabled.dto";
+import { UpdateNotificationsEnabledDto } from "./dtos/update-notifications-enabled.dto";
+import { UpdateTinkoffMarketTokenDto } from "./dtos/update-tinkoff-market-token.dto";
+import { UpdateAutomatedTradingEnabledDto } from "./dtos/update-automated-trading-enabled.dto";
 import { TinkoffMarket } from "../../../../../infra";
 import { HttpError } from "../../../core/http.error";
 import { HttpStatus } from "../../../core/http-status.enum";
 import { Currencies } from "@tinkoff/invest-openapi-js-sdk";
 import { UserDto } from "../../../../../domain/users/dtos/user.dto";
-import { UpdateUserDto } from "../../../dtos/users/update-user.dto";
+import { UpdateUserDto } from "./dtos/update-user.dto";
 import { UserMapper } from "../../../../../domain/users/user.mapper";
 
 @injectable()

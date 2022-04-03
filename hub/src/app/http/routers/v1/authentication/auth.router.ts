@@ -1,8 +1,8 @@
 import express, { Request, Response } from "express";
 import { ioc } from "../../../../../ioc";
 import { AuthController } from "./auth.controller";
-import { SignInDto } from "../../../dtos/auth/sign-in.dto";
-import { SignUpDto } from "../../../dtos/auth/sign-up.dto";
+import { SignInDto } from "./dtos/sign-in.dto";
+import { SignUpDto } from "./dtos/sign-up.dto";
 import { ValidationGuard } from "../../../middlewares/guards/validation.guard";
 import { AuthGuard } from "../../../middlewares/guards/auth.guard";
 import { UserMapper } from "../../../../../domain/users/user.mapper";
