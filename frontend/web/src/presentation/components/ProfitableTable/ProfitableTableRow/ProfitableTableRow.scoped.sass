@@ -1,9 +1,12 @@
 .profitable-table-row
-  display: flex
-  flex-direction: row
-  justify-content: space-between
+  display: inline-grid
+  grid-template-columns: repeat(4, 1fr)
   width: 100%
-  margin-top: 20px
-
+  background: #2b292e
+  padding: 10px 20px
+  box-sizing: border-box
   h3
     font-weight: 500
+
+.profitable-table-row_dark
+  background: #1b1a1d

@@ -1,3 +1,3 @@
-# Microservices Adapters
+# @traderius:adapters
 
 Communication with external services
