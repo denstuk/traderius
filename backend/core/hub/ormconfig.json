@@ -1,0 +1,44 @@
+[
+	{
+		"name": "develop",
+		"type": "postgres",
+		"host": "localhost",
+		"port": 5432,
+		"username": "postgres",
+		"password": "Pa$$word12!",
+		"database": "traderius",
+		"synchronize": true,
+		"dropSchema": false,
+		"entities": [
+			"src/**/*.entity.ts"
+		],
+		"migrations": [
+			"src/infra/migrations/**/*.ts"
+		],
+		"cli": {
+			"entitiesDir": "src/**/entities/*.ts",
+			"migrationsDir": "src/infra/migrations"
+		}
+	},
+	{
+		"name": "test",
+		"type": "postgres",
+		"host": "localhost",
+		"port": 5432,
+		"username": "postgres",
+		"password": "Pa$$word12!",
+		"database": "traderius_test",
+		"synchronize": true,
+		"dropSchema": true,
+		"entities": [
+			"src/**/*.entity.ts"
+		],
+		"migrations": [
+			"src/infra/migrations/**/*.ts"
+		],
+		"cli": {
+			"entitiesDir": "src/**/entities/*.ts",
+			"migrationsDir": "src/infra/migrations"
+		}
+	}
+]

@@ -1,5 +1,5 @@
 {
-  "extends": "../conventions/tsconfig.json",
+  "extends": "../../conventions/tsconfig.json",
   "compilerOptions": {
 	"typeRoots": ["src/app/http/@types", "node_modules/@types"],
   },
