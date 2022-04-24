@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
 import { Regressor } from "../../../../../domain/analysis/regressor";
-import { Configuration, TinkoffMarket } from "../../../../../infra";
+import { Configuration } from "../../../../../infra";
 import { PricePoint } from "../../../../../domain/analysis/analysis.types";
 import { Predictor } from "../../../../../infra/predictor";
 import {TinkoffV1Converter} from "../../../../../infra/markets/tinkoff-v1-rest/converter/tinkoff-v1-converter";

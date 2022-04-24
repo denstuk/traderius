@@ -6,6 +6,7 @@ import { authDispatchers, IUser } from "../../../../domain";
 import { UsersApi } from "../../../../infrastructure/api/users/users";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
+import { Label } from "../../../components/Text/Label/Label";
 
 type UserInfoBadgeProps = { user: IUser };
 export const UserInfoBadge: React.FC<UserInfoBadgeProps> = ({ user }: UserInfoBadgeProps) => {
@@ -64,6 +65,8 @@ export const UserInfoBadge: React.FC<UserInfoBadgeProps> = ({ user }: UserInfoBa
 							</div>
 						)}
 						<UserInfoConnectionsForm user={user} />
+						<Label text={"Подключение сертификата шифрования"} />
+						<button className="user-info-badge__button">Сгенерировать ключ</button>
 					</div>
 				</div>
 			</div>

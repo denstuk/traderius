@@ -15,13 +15,6 @@ export class KafkaClientService {
 		const kafka = new Kafka(this.config);
 		this.producer = kafka.producer();
 		await this.producer.connect();
-
-		const producer = kafka.producer();
-		await producer.connect();
-		await producer.send({
-			topic: "mailer-service.send",
-			messages: [{ value: "Hello KafkaJS user!" }],
-		});
 	}
 
 	async publish(topic: KafkaTopic, data: unknown): Promise<void> {

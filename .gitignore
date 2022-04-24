@@ -8,6 +8,11 @@ build
 ### LOGS
 .log
 
+### ENVIRONMENT
+.env
+.env.development
+!.env.example
+
 ### macOS ###
 # General
 .DS_Store
@@ -89,19 +94,19 @@ jspm_packages/
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
-# TypeScript cache
+# TypeScript redis
 *.tsbuildinfo
 
-# Optional npm cache directory
+# Optional npm redis directory
 .npm
 
-# Optional eslint cache
+# Optional eslint redis
 .eslintcache
 
-# Optional stylelint cache
+# Optional stylelint redis
 .stylelintcache
 
-# Microbundle cache
+# Microbundle redis
 .rpt2_cache/
 .rts2_cache_cjs/
 .rts2_cache_es/
@@ -116,14 +121,8 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
 
-# parcel-bundler cache (https://parceljs.org/)
+# parcel-bundler redis (https://parceljs.org/)
 .cache
 .parcel-cache
 
@@ -144,16 +143,16 @@ dist
 # vuepress build output
 .vuepress/dist
 
-# vuepress v2.x temp and cache directory
+# vuepress v2.x temp and redis directory
 .temp
 
-# Docusaurus cache and generated files
+# Docusaurus redis and generated files
 .docusaurus
 
 # Serverless directories
 .serverless/
 
-# FuseBox cache
+# FuseBox redis
 .fusebox/
 
 # DynamoDB Local files
@@ -176,7 +175,7 @@ dist
 # Serverless Webpack directories
 .webpack/
 
-# Optional stylelint cache
+# Optional stylelint redis
 
 # SvelteKit build / generate output
 .svelte-kit
@@ -278,7 +277,7 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
-# Android studio 3.1+ serialized cache file
+# Android studio 3.1+ serialized redis file
 .idea/caches/build_file_checksums.ser
 
 ### WebStorm Patch ###
@@ -312,7 +311,7 @@ fabric.properties
 .idea/codestream.xml
 
 ### Windows ###
-# Windows thumbnail cache files
+# Windows thumbnail redis files
 Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
