@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./UserBalanceBadge.scoped.sass";
-import { IBalance } from "../../../../domain";
 import { UsersApi } from "../../../../infrastructure/api/users/users";
+import { PuffLoader } from "../../../components/Loaders/PuffLoader/PuffLoader";
 
 type UserBalanceBadgeLineProps = { amount: number; currency: string };
 
@@ -27,12 +27,9 @@ export const UserBalanceBadge: React.FC = () => {
 
 	return (
 		<div className="user-balance-badge">
-			<div className="badge-title">
-				<h2>Баланс</h2>
-				<h3>Доступно на вашем счету Tinkoff:</h3>
-			</div>
-
-			{!loading && (
+			{loading ? (
+				<PuffLoader isLoading={loading} size={100} />
+			) : (
 				<React.Fragment>
 					<UserBalanceBadgeLine amount={rub} currency={"₽"} />
 					<hr className="user-balance-badge-line-splitter" />

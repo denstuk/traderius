@@ -4,7 +4,7 @@ import { NewsBlock } from "./NewsBlock/NewsBlock";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { INews, useApi } from "../../../domain";
-import { PuffLoader } from "../PuffLoader/PuffLoader";
+import { PuffLoader } from "../Loaders/PuffLoader/PuffLoader";
 
 const NEWS_PER_PAGE = 3;
 
@@ -23,7 +23,7 @@ export const NewsCard: React.FC = () => {
 			{isNewsLoaded ? (
 				<NewsBlock news={data.slice(position, position + NEWS_PER_PAGE)} />
 			) : (
-				<PuffLoader isLoading={loading} />
+				<PuffLoader isLoading={loading} size={10} />
 			)}
 			<div className="news__toggle-bar">
 				<button onClick={() => togglePosition("prev")} className="news__toggle-btn">
