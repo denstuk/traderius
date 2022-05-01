@@ -1,4 +1,4 @@
-import { CACHE_MANAGER, Controller, Get, Inject } from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { FinanceNewsService } from "./finance-news/finance-news.service";
 import { NewsDto } from "./finance-news/dtos/news-dto";
@@ -19,6 +19,6 @@ export class AppController {
   })
   @Get("/stocks")
   getStocksNews(): Promise<NewsDto[]> {
-    return this.financeNewsService.fetchFromAPI();
+    return this.financeNewsService.fetchNews();
   }
 }

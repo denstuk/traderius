@@ -5,7 +5,7 @@ import { VersioningType } from "@nestjs/common";
 import { DocumentationBuilder } from "./modules/infrastructure/documentation";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   const config = app.get(ConfigService);
 
   app.setGlobalPrefix(config.get("HTTP_PREFIX"));

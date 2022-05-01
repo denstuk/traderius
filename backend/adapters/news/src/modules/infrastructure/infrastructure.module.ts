@@ -1,8 +1,7 @@
 import { Module } from "@nestjs/common";
 import { ConfigurationModule } from "./configuration/configuration.module";
-import { RedisModule } from "./redis/redis.module";
 
 @Module({
-  imports: [ConfigurationModule, RedisModule],
+  imports: [ConfigurationModule],
 })
 export class InfrastructureModule {}
