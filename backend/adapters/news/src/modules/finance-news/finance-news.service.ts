@@ -3,7 +3,7 @@ import { ConfigService } from "@nestjs/config";
 import { NewsDto } from "./dtos/news-dto";
 import { HttpService } from "@nestjs/axios";
 import { firstValueFrom } from "rxjs";
-import { RedisCacheService } from "../infrastructure/redis-cache/redis-cache.service";
+import { RedisCacheService } from "../redis-cache/redis-cache.service";
 import * as dayjs from "dayjs";
 
 @Injectable()
