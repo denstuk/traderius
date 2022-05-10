@@ -13,6 +13,14 @@ build
 .env.development
 !.env.example
 
+### MODULES
+venv
+
+### IDE
+.idea
+.vs
+.vscode
+
 ### macOS ###
 # General
 .DS_Store
@@ -132,7 +140,6 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
