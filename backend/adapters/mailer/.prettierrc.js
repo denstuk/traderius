@@ -1,2 +1,2 @@
-const defaultConfig = require("../../conventions/.prettierrc.js");
+const defaultConfig = require("../../packages/conventions/.prettierrc.js");
 module.exports = defaultConfig;
