@@ -9,7 +9,7 @@ import { PuffLoader } from "../Loaders/PuffLoader/PuffLoader";
 const NEWS_PER_PAGE = 3;
 
 export const NewsCard: React.FC = () => {
-	const { loading, data } = useApi<INews[]>({ url: "http://localhost:9801/api/v1/news" });
+	const { loading, data } = useApi<INews[]>({ url: "http://localhost:9901/api/news/v1/stocks" });
 	const [position, setPosition] = React.useState(0);
 	const isNewsLoaded = !loading && data && data.length !== 0;
 

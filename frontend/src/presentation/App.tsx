@@ -13,7 +13,7 @@ function App() {
 				<Routes>
 					<Route index element={<PageWrapper page={<HomePage />} />} />
 					<Route path={"/user"} element={<PageWrapper page={<UserPage />} />} />
-					<Route path={"/analysis"} element={<PageWrapper page={<AnalyticsPage />} />} />
+					<Route path={"/analytics"} element={<PageWrapper page={<AnalyticsPage />} />} />
 					<Route path={"/auth"} element={<Auth />} />
 				</Routes>
 			</BrowserRouter>
